@@ -1,45 +1,137 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+## Contents:book:
+### UX:superhero_man:	
+  * **Project Goals** :jigsaw:	
+  * **Target Audience Goals** 	:dart:
+  * **Site Owner Goals**  	:dart:
+  * **User Requirements and Expectations** 	:dart:
+  * **Design Choices** :framed_picture:
+    * Fonts
+    * Icons
+    * Colours
+    * Sounds
+  * **Wireframes** :straight_ruler:		
+  * **Features** :abacus:	
+    * Features that have been developed
+    * Features that will be implemented in the future
+  * **Technologies Used** :computer:	
+    * Languages
+    * Tools & Libraries
+  * **Testing** :magnet:
+  * **Bugs** :mosquito:
+  * **Deployment** :surfer:
+  * **Acknowledgements** :clap:
+  
+## UX ( User Experience)
+### Project Goals :jigsaw:	
+The goal of this project is to provide the users with a website where they can see or leave a review for a health practitioner based in the area of Hertfordshire UK
 
-Welcome USER_NAME,
+### User Goals :jigsaw: 
+* Ability to set up an account
+* Ability to log in and log out
+* Ability to see my previous reviews
+* ability to search for therapist by location 
+* Visual interaction and feedback
+* Interact with the website on Desktop tablet and mobile
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+## User stories 	:dart:
+* As a user I expect to **see reviews of different therapists**
+* As a user I want to be able to **search therapists by location or therapies**
+* As a user I want to be able to **setup an account to be able to leave reviews**
+* As a user I want to be able to **see profiles of the therapists**
+* As a user I expect to **be able to say if I recommend the therapist**
 
-## Gitpod Reminders
+## Site Owner Goals	:dart:
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+* Collect data about local therapists
+* Promote therapists in the local area
+* Promote a range of exercise, massage tools and make a profit using affiliate links to those products at [Amazon](https://www.amazon.co.uk/)
 
-`python3 -m http.server`
+## User Requirements and Expectations 	:dart:
 
-A blue button should appear to click: *Make Public*,
+* **Requirements**
+  * Navigate the website using the menu buttons and drop down selector
+  * Ability to use this application on mobile and desktop devices
+  * Contnent displayed in a visually appealing manor
+  
+* **Expectations**
+  * Content is visually satisfying and informative on all screen sizes
+  * No information overload
+  * Navigation takes user to specific parts of the website
+  
+## Design choices :framed_picture:	
+  
+**Fonts**
 
-Another blue button should appear to click: *Open Browser*.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+**Colours**
 
-A blue button should appear to click: *Make Public*,
 
-Another blue button should appear to click: *Open Browser*.
+**Colours used**
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+**Sounds**
 
-## Updates Since The Instructional Video
+## Wireframes :straight_ruler:
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+## Features :abacus:
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+**Features that have been developed:**
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+**Features to be implemented in the future**
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+## Technologies Used :computer:
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+### Languages
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [JavaScript](https://www.w3schools.com/js/)
+* [Python](https://www.python.org/)
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+### Tools & Libraries
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [MongoDB](https://www.mongodb.com/)
+* [PopperJS](https://popper.js.org/)
+* [jQuery](https://jquery.com/)
+* [Git](https://git-scm.com/)
+* [Bootstrap](https://getbootstrap.com/)
+* [Google Fonts](https://fonts.google.com/)
+* [Balsamiq](https://balsamiq.com/)
+* [AmIresponsive](http://ami.responsivedesign.is/) - used to generate multi screen view of the webiste on different devices
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
 
---------
+### Testing :magnet:
 
-Happy coding!
+#### Plan
+
+
+#### Tests
+##### Using W3C Markup Validator
+###### Test 1 :writing_hand:
+* **Error:** 
+* **Solution:** 
+###### Test 2 :mag_right:
+* **Warning:**  
+* **Solution:** 
+###### Test 3 :chart_with_upwards_trend:
+* **Error:** 
+* **Solution** 
+##### Manual testing
+###### Test1 :magnet:
+* **Error:** 
+* **Solution** 
+###### Test 2 :chart_with_downwards_trend:
+* **Error:** 
+* **Solution**  
+### Bugs :mosquito:
+####  :spider:
+* **Issue:** 
+* **Fix:** 
+####  :ant:
+* **Issue:** 
+* **Fix:** 
+
+### Deployment :surfer:
+
+#### Running Quizzero Locally
+
+### Acknowledgements :clap:
