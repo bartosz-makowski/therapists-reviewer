@@ -35,7 +35,7 @@ The goal of this project is to provide the users with a website where they can s
 
 ## User stories 	:dart:
 * As a user I expect to **see reviews of different therapists**
-* As a user I want to be able to **search therapists by location or therapies**
+* As a user I want to be able to **search practitioners by location or therapies**
 * As a user I want to be able to **setup an account to be able to leave reviews**
 * As a user I want to be able to **see profiles of the therapists**
 * As a user I expect to **be able to say if I recommend the therapist**
@@ -132,6 +132,6 @@ The goal of this project is to provide the users with a website where they can s
 
 ### Deployment :surfer:
 
-#### Running Quizzero Locally
+#### Running Therapist Reviewer Locally
 
 ### Acknowledgements :clap:
