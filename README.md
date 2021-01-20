@@ -71,6 +71,7 @@ The goal of this project is to provide the users with a website where they can s
 **Sounds**
 
 ## Wireframes :straight_ruler:
+I built the wireframes for this project using <a href="https://balsamiq.com/">Balsamiq</a>. Started by doing a very basic wireframe for Mobile/Tablet/Desktop - these were to get a basic understanding of how structurally elements would appear on the page. You can view those in a wireframes [folder](https://github.com/bartosz-makowski/therapists-reviewer/tree/master/wireframes).
 
 ## Features :abacus:
 
