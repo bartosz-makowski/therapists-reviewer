@@ -7,7 +7,13 @@
 </head>
 <body>
     {% for therapist in therapists %}
-    
+        {{ therapist.first_name.capitalize() }}<br>
+        {{ therapist.last_name.capitalize() }}<br>
+        {{ therapist.email }}<br>
+        {{ therapist.webpage }}<br>
+        {{ therapist.main_therapy.capitalize() }}<br>
+        {{ therapist.other_therapies }}<br>
+        {{ therapist.location.capitalize() }}<br>
     {% endfor %}
 </body>
 </html>
