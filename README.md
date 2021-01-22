@@ -107,7 +107,6 @@ Key                | Value
 _id                | ObjectId
 user               | String
 title              | String
-rating             | String
 review_description | String
 would_recommend    | String
 
