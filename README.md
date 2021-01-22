@@ -171,6 +171,40 @@ would_recommend    | String
 
 ### Deployment :surfer:
 
+#### To deploy your project on Heroku, use the following steps: 
+
+1. Login to your Heroku account and create a new app. Choose your region. 
+1. Ensure the Procfile and requirements.txt files exist are present and up-to-date in your local repository.  
+    Requirements:
+    ```
+    pip3 freeze --local > requirements.txt
+    ```
+    Procfile:
+    ```
+    echo web: python app.py > Procfile
+    ```
+1. The Procfile should contain the following line:
+    ```
+    web: python app.py
+    ```
+
+1. Scroll down to "deployment method"-section. Choose "Github" for automatic deployment.
+1. From the inputs below, make sure your github user is selected, and then enter the name for your repo. Click "search". When it finds the repo, click the "connect" button.
+1. Scroll back up and click "settings". Scroll down and click "Reveal config vars". Set up the same variables as in your env.py (IP, PORT, SECRET_KEY, MONGO_URI and MONGODB_NAME):
+    !You shouldn't set the DEBUG variable in under config vars, only in your env.py to prevent DEBUG being active on live website. 
+
+    ```
+    IP = 0.0.0.0
+    PORT = 5000
+    SECRET_KEY = YOUR_SECRET_KEY
+    MONGO_URI = YOUR_MONGODB_URI
+    MONGO_DBNAME = DATABASE_NAME
+    ```
+
+1. Scroll back up and click "Deploy". Scroll down and click "Enable automatic deployment".
+1. Just beneath, click "Deploy branch". Heroku will now start building the app. When the build is complete, click "view app" to open it.
+1. In order to commit your changes to the branch, use git push to push your changes. 
+    
 #### Running Therapist Reviewer Locally
 
 ### Acknowledgements :clap:
