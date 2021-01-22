@@ -9,7 +9,8 @@
     * Icons
     * Colours
     * Sounds
-  * **Wireframes** :straight_ruler:		
+  * **Wireframes** :straight_ruler:
+  * **Database Structure** :straight_ruler:
   * **Features** :abacus:	
     * Features that have been developed
     * Features that will be implemented in the future
@@ -72,6 +73,44 @@ The goal of this project is to provide the users with a website where they can s
 
 ## Wireframes :straight_ruler:
 I built the wireframes for this project using <a href="https://balsamiq.com/">Balsamiq</a>. Started by doing a very basic wireframe for Mobile/Tablet/Desktop - these were to get a basic understanding of how structurally elements would appear on the page. You can view those in a wireframes [folder](https://github.com/bartosz-makowski/therapists-reviewer/tree/master/wireframes).
+
+## **Database Structure**
+
+I have used MongoDB to set up the database for this project with the following collections: 
+
+#### **Users:**
+
+Key      | Value
+---------|-----------
+_id      | ObjectId
+username | String
+password | String
+
+#### **Therapists:**
+
+Key             | Value
+----------------|-----------
+_id             | ObjectId
+first_name      | String
+second_name     | String
+email           | String
+webpage         | String
+main_therapy    | String
+other_therapies | String
+location        | String
+reviews         | Array
+
+#### **Reviews:**
+
+Key                | Value
+-------------------|-----------
+_id                | ObjectId
+user               | String
+title              | String
+rating             | String
+review_description | String
+would_recommend    | String
+
 
 ## Features :abacus:
 
