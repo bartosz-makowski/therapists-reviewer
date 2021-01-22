@@ -17,7 +17,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-
+@app.route('/')
 @app.route('/get_therapists')
 def get_therapists():
     therapists = mongo.db.therapists.find()
