@@ -6,13 +6,13 @@
         {% for therapist in therapists %}
         <div class="row">
             <div class="col-12">
-                <h3>{{ therapist.first_name.capitalize() }}</h3>
-                <h3>{{ therapist.last_name.capitalize() }}</h3>
-                <h4>{{ therapist.email }}</h4>
-                <h4>{{ therapist.webpage }}</h4>
-                <h4>{{ therapist.main_therapy }}</h4>
-                <h5>{{ therapist.other_therapies }}</h5>
-                <h3>{{ therapist.location.capitalize() }}</h3>
+                First Name: <strong>{{ therapist.first_name.capitalize() }}</strong> <br>  
+                Second Name: <strong>{{ therapist.last_name.capitalize() }}</strong> <br>
+                Email: <strong>{{ therapist.email }}</strong> <br>
+                Webpage: <strong>{{ therapist.webpage }}</strong> <br>
+                Main Therapy: <strong>{{ therapist.main_therapy.capitalize() }}</strong> <br>
+                Other Therapies: <strong>{{ therapist.other_therapies.capitalize() }}</strong> <br>
+                Location: <strong>{{ therapist.location.capitalize() }}</strong> <br>
             </div>
         </div>
         {% endfor %}
