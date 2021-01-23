@@ -10,6 +10,18 @@ body {
     font-size: 1.6rem;
 }
 
+
+/* Navbar */
+
+
+#nav-brand {
+    font-size: 2rem;
+}
+
+
+/* Hero image */
+
+
 #hero-image {
     width: 100%;
 }
