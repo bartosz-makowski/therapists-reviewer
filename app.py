@@ -49,7 +49,7 @@ def register():
         'password': password
     })
 
-    return render_template('pages/authentication.html', registered=True)
+    return render_template('pages/user-authentication.html', registered=True)
 
 
 @app.route('/get_therapists')
