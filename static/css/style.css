@@ -1,0 +1,12 @@
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #fafafa;
+    font-size: 1.6rem;
+}
+
+#hero-image {
+    width: 100%;
+}
