@@ -4,6 +4,7 @@ from flask import (Flask, flash,
     request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -23,6 +24,32 @@ def home():
     Function to load the homepage
     """
     return render_template('pages/home.html')
+
+
+@app.route('/register', methods=["GET", "POST"])
+def register():
+    """
+    Allows the user to register at the website
+    Checks if user already exists in the DB 
+    redirects user to homepage
+    """
+    if requested.method == "POST":
+        existing_user = mongo.db.users.find_one()
+        {"username": request.form.get("username").lower()}
+
+        if existing_user:
+            flash("Username is already in our database")
+            return redirect(url_for('register'))
+    
+    username = request.form.get("username").lower()
+    password = generate_password_hash(request.form.get("password"))
+
+    mongo.db.users.insert_one({
+        'username': username,
+        'password': password
+    })
+
+    return render_template('pages/authentication.html', registered=True)
 
 
 @app.route('/get_therapists')
