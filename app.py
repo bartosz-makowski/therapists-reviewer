@@ -18,10 +18,8 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-@app.route('/get_therapists')
-def get_therapists():
-    therapists = mongo.db.therapists.find()
-    return render_template('therapists.html', therapists=therapists)
+def home():
+    return render_template('pages/home.html')
 
 
 if __name__ == '__main__':
