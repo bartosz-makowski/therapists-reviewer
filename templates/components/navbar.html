@@ -6,10 +6,10 @@
         </button>
         <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavAltMarkup">
             <div class="navbar-nav flex-row justify-content-around flex-wrap">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
                 <a class="nav-link" href="#">Log in</a>
                 <a class="nav-link" href="#">Log out</a>
-                <a class="nav-link" href="#">Therapists</a>
+                <a class="nav-link" href="{{url_for('get_therapists')}}">Therapists</a>
                 <a class="nav-link" href="#">Leave Feedback</a>
                 <a class="nav-link" href="#">Recommendations</a>
             </div>

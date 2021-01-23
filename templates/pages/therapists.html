@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+{% include 'components/navbar.html' %}
+    <h2>Available Therapists</h2>
+    <div class="container-fluid" id="therapists-container">
+        {% for therapist in therapists %}
+        <div class="row">
+            <div class="col-12">
+                <h3>{{ therapist.first_name.capitalize() }}</h3>
+                <h3>{{ therapist.last_name.capitalize() }}</h3>
+                <h4>{{ therapist.email }}</h4>
+                <h4>{{ therapist.webpage }}</h4>
+                <h4>{{ therapist.main_therapy }}</h4>
+                <h5>{{ therapist.other_therapies }}</h5>
+                <h3>{{ therapist.location.capitalize() }}</h3>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
