@@ -19,7 +19,19 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def home():
+    """
+    Function to load the homepage
+    """
     return render_template('pages/home.html')
+
+
+@app.route('/get_therapists')
+def get_therapists():
+    """
+    function to load list of therapists from db
+    """
+    therapists = mongo.db.therapists.find()
+    return render_template('pages/therapists.html', therapists=therapists)
 
 
 if __name__ == '__main__':
