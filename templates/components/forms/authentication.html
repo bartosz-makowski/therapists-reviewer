@@ -1,11 +1,13 @@
 <form method="POST" action="{{ url_for('user_authentication') }}">
     <div class="mb-3">
         <label class="form-label" for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="username" aria-describedby="username">
+        <input type="text" class="form-control" id="username" name="username" aria-describedby="username"
+        minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]${5,15}">
     </div>
     <div class="mb-3">
         <label class="form-label" for="password">Password</label>
-        <input class="form-control" type="password" id="password" name="password">
+        <input class="form-control" type="password" id="password" name="password"
+        minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]${5,15}">
     </div>
     <button class="btn btn-primary" type="submit">Submit</button>
 </form>
