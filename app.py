@@ -26,28 +26,28 @@ def home():
     return render_template('pages/home.html')
 
 
-@app.route('/register', methods=["GET", "POST"])
-def register():
+@app.route('/user-authentication', methods=["GET", "POST"])
+def user_authentication():
     """
     Allows the user to register at the website
     Checks if user already exists in the DB 
     redirects user to homepage
     """
-    if requested.method == "POST":
-        existing_user = mongo.db.users.find_one()
-        {"username": request.form.get("username").lower()}
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+        {"username": request.form.get("username").lower()})
 
         if existing_user:
             flash("Username is already in our database")
-            return redirect(url_for('register'))
-    
-    username = request.form.get("username").lower()
-    password = generate_password_hash(request.form.get("password"))
+            return redirect(url_for('user_authentication'))
+        
+        username = request.form.get("username").lower()
+        password = generate_password_hash(request.form.get("password"))
 
-    mongo.db.users.insert_one({
-        'username': username,
-        'password': password
-    })
+        mongo.db.users.insert_one({
+            'username': username,
+            'password': password
+        })
 
     return render_template('pages/user-authentication.html', registered=True)
 
