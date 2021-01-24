@@ -51,13 +51,32 @@ def user_authentication():
         session["user"] = request.form.get("username").lower()
         flash("Registration successful, you are now logged in")
 
-        if mongo.db.users.find_one({'username': username}) is not None:
-            user = mongo.db.users.find_one({'username': username})
-            user_id = user['_id']
-            session['user_id'] = str(user_id)
-            return redirect(url_for("user_authentication", user_id=user_id))
-
     return render_template('pages/user-authentication.html', registered=True)
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method=="POST":
+        existing_user = mongo.db.find_one(
+            {"username": request.form.get("username").lower()})
+        
+        if existing_user:
+            #check if username in db
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome back!{}".format(request.form.get("username")))
+            else:
+                #invalid password match
+                flash("Incorrect username or password")
+                return redirect(url_for('user_authentication'))
+            
+        else:
+            #username doesn't exist
+            flash("Incorrect username or password")
+            return redirect(url_for('user_authentication'))
+
+    return render_template('pages/user-authentication.html')
 
 
 @app.route('/get_therapists')
