@@ -17,7 +17,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+@app.route('/')
 @app.route('/home')
 def home():
     """
@@ -35,7 +35,7 @@ def user_authentication():
     """
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
-        {"username": request.form.get("username").lower()})
+            {"username": request.form.get("username").lower()})
 
         if existing_user:
             flash("Username is already in our database")
@@ -48,6 +48,14 @@ def user_authentication():
             'username': username,
             'password': password
         })
+        session["user"] = request.form.get("username").lower()
+        flash("Registration successful, you are now logged in")
+
+        if mongo.db.users.find_one({'username': username}) is not None:
+            user = mongo.db.users.find_one({'username': username})
+            user_id = user['_id']
+            session['user_id'] = str(user_id)
+            return redirect(url_for("home", user_id=user_id))
 
     return render_template('pages/user-authentication.html', registered=True)
 
