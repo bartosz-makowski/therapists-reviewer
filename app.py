@@ -55,7 +55,7 @@ def user_authentication():
             user = mongo.db.users.find_one({'username': username})
             user_id = user['_id']
             session['user_id'] = str(user_id)
-            return redirect(url_for("home", user_id=user_id))
+            return redirect(url_for("user_authentication", user_id=user_id))
 
     return render_template('pages/user-authentication.html', registered=True)
 
