@@ -85,6 +85,17 @@ def login():
     return render_template('pages/user-authentication.html')
 
 
+@app.route('/logout')
+def logout():
+    """
+    Logs user out from the session
+    Redirects to login page
+    """
+    flash("You have logged out")
+    session.clear()
+    return redirect(url_for('login'))
+
+
 @app.route('/get_therapists')
 def get_therapists():
     """
