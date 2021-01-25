@@ -1,20 +1,18 @@
 {% extends 'layout/base.html' %}
 {% block content %}
 {% include 'components/navbar.html' %}
-    <h2>Available Therapists</h2>
-    <div class="container" id="therapists-container">
+    <h2 id="therapists-h">Available Therapists</h2>
         {% for therapist in therapists %}
         <div class="row">
             <div class="col-12 therapist-card">
                 First Name: <strong>{{ therapist.first_name.capitalize() }}</strong> <br>  
                 Second Name: <strong>{{ therapist.last_name.capitalize() }}</strong> <br>
                 Email: <strong>{{ therapist.email }}</strong> <br>
-                Webpage: <strong>{{ therapist.webpage }}</strong> <br>
+                Webpage: <strong><a href="#">{{ therapist.webpage }}</a></strong> <br>
                 Main Therapy: <strong>{{ therapist.main_therapy.capitalize() }}</strong> <br>
                 Other Therapies: <strong>{{ therapist.other_therapies.capitalize() }}</strong> <br>
                 Location: <strong>{{ therapist.location.capitalize() }}</strong> <br>
             </div>
         </div>
         {% endfor %}
-    </div>
 {% endblock %}
