@@ -25,3 +25,13 @@ body {
 #hero-image {
     width: 100%;
 }
+
+/* therapists */
+
+.therapist-card {
+    font-size: 2rem;
+    border-bottom: 2px solid #949393;
+    border-top: 2px solid #949393;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}

@@ -2,10 +2,10 @@
 {% block content %}
 {% include 'components/navbar.html' %}
     <h2>Available Therapists</h2>
-    <div class="container-fluid" id="therapists-container">
+    <div class="container" id="therapists-container">
         {% for therapist in therapists %}
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 therapist-card">
                 First Name: <strong>{{ therapist.first_name.capitalize() }}</strong> <br>  
                 Second Name: <strong>{{ therapist.last_name.capitalize() }}</strong> <br>
                 Email: <strong>{{ therapist.email }}</strong> <br>
