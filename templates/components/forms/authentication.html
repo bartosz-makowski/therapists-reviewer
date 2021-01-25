@@ -1,17 +1,44 @@
-<form method="POST" action="{{ url_for('user_authentication') }}">
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-8">
-                <label class="form-label" for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" aria-describedby="username"
-                minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]${5,15}">
+{% if register == True %}
+    <form method="POST" action="{{ url_for('register') }}">
+{% else %}
+    <form method="POST" action="{{ url_for('login') }}">
+{% endif %} 
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <label class="form-label" for="username">Username</label>
+                    {% if register == True %}
+                        <span class="validation"> should be 5-15 characters letters or numbers</span>
+                    {% endif %}
+                    <input type="text" class="form-control" id="username" name="username" aria-describedby="username"
+                    minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]${5,15}">
+                </div>
+                <div class="col-8">
+                    <label class="form-label" for="password">Password</label>
+                    {% if register == True %}
+                        <span class="validation"> should be 5-15 characters letters or numbers</span>
+                    {% endif %}
+                    <input class="form-control" type="password" id="password" name="password"
+                    minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]${5,15}">
+                </div>
             </div>
-            <div class="col-8">
-                <label class="form-label" for="password">Password</label>
-                <input class="form-control" type="password" id="password" name="password"
-                minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]${5,15}">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    {% if register==True %}
+                        <button class="btn btn-primary" type="submit">Register</button>
+                    {% else %}
+                        <button class="btn btn-primary" type="submit">Sign In</button>
+                    {% endif %}
+                </div>
+            </div>
+           <div class="row justify-content-center">
+                <div class="col-6">
+                    {% if register==True %}
+                        <h5>Already have your account ?</h5><a href="{{url_for('login')}}" class="btn btn-primary">Log In</a>
+                    {% else %}
+                        <h5>Need to register ?</h5><a href="{{url_for('register')}}" class="btn btn-primary">Register</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
-    </div>
-    <button class="btn btn-primary" type="submit">Submit</button>
-</form>
+    </form>
