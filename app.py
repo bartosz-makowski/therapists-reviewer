@@ -98,7 +98,7 @@ def logout():
 
 @app.route('/leave_feedback', methods=["GET", "POST"])
 def leave_feedback():
-    if request.method=="POST":
+    if request.method == "POST":
         would_recommend = "on" if request.form.get('would_recommend') else "off"
         review = {
             "user": session["user"],
@@ -106,11 +106,10 @@ def leave_feedback():
             'review_description': request.form.get('review_description'),
             'would_recommend': would_recommend,
             'therapist_id': request.form.get('select-therapist')
-
         }
         mongo.db.reviews.insert_one(review)
-        flash("Review successfully added")
-        return redirect(url_for('get_therapists'))
+        flash("Feedback saved successfully")
+        return redirect(url_for('leave_feedback'))
 
     therapists = mongo.db.therapists.find()
     return render_template('pages/leave-feedback.html', therapists=therapists)

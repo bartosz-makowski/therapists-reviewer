@@ -1,6 +1,7 @@
 {% extends 'layout/base.html' %}
 {% block content %}
     {% include 'components/navbar.html' %}
+    {% include 'components/flash_messages/flash-messages.html' %}
     <h2 id="therapists-h">Available Therapists</h2>
         {% for therapist in therapists %}
         <div class="row">
