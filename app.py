@@ -96,6 +96,11 @@ def logout():
     return redirect(url_for('login'))
 
 
+@app.route('/leave_feedback', methods=["GET", "POST"])
+def leave_feedback():
+    therapists = mongo.db.therapists.find()
+    return render_template('pages/leave-feedback.html', therapists=therapists)
+
 @app.route('/get_therapists')
 def get_therapists():
     """
