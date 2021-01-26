@@ -105,6 +105,7 @@ def leave_feedback():
             'title': request.form.get('title'),
             'review_description': request.form.get('review_description'),
             'would_recommend': would_recommend,
+            'therapist_id': request.form.get('select-therapist')
 
         }
         mongo.db.reviews.insert_one(review)
