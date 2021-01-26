@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Choose the therapist</option>
+                <label class="form-label" for="select-therapist">Select therapist</label>
+                <select class="form-select" id="select-therapist" name="select-therapist" aria-label="select therapist" required>
                     {% for therapist in therapists %}
                         <option value="{{ therapist._id }}">{{ therapist.first_name.capitalize() }}  {{ therapist.last_name.capitalize() }}</option>
                     {% endfor %}
@@ -15,11 +15,11 @@
             </div>
             <div class="col-8">
                 <label class="form-label" for="title">Review title</label>
-                <input type="text" class="form-control" id="title" name="title" aria-describedby="review title">
+                <input type="text" class="form-control" id="title" name="title" aria-describedby="review title" required>
             </div>
             <div class="col-8">
                 <label class="form-label" for="review_description">Your feedback...</label>
-                <textarea class="form-control" id="review_description" name="review_description" aria-label="textarea"></textarea>
+                <textarea class="form-control" id="review_description" name="review_description" aria-label="textarea" required></textarea>
             </div>
             <div class="form-check form-switch col-8">
                 <label class="form-label" for="would_recommend">Would you recommend this therapists?</label>
