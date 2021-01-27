@@ -10,6 +10,7 @@
                 {% if session.user %}
                     <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
                     <a class="nav-link" href="{{ url_for('leave_feedback') }}">Leave Feedback</a>
+                    <a class="nav-link" href="{{url_for('user_profile')}}">Your Profile</a>
                 {% else %}
                     <a class="nav-link" href="{{ url_for('register') }}">Register</a>
                     <a class="nav-link" href="{{ url_for('login') }}">Log in</a>

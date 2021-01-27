@@ -96,6 +96,11 @@ def logout():
     return redirect(url_for('login'))
 
 
+@app.route('/user_profile')
+def user_profile():
+    return render_template('/pages/user-profile.html')
+
+
 @app.route('/leave_feedback', methods=["GET", "POST"])
 def leave_feedback():
     if request.method == "POST":
