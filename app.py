@@ -123,6 +123,11 @@ def get_therapists():
     return render_template('pages/therapists.html', therapists=therapists)
 
 
+@app.route('/recommendations')
+def recommendations():
+    return render_template('pages/recommendations.html')
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
