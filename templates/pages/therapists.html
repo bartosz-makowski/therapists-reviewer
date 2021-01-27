@@ -12,7 +12,7 @@
                 Webpage: <strong><a href="#">{{ therapist.webpage }}</a></strong> <br>
                 Main Therapy: <strong>{{ therapist.main_therapy.capitalize() }}</strong> <br>
                 Other Therapies: <strong>{{ therapist.other_therapies.capitalize() }}</strong> <br>
-                Location: <strong>{{ therapist.location.capitalize() }}</strong> <br>
+                Location: <strong>{{ therapist.location.title() }}</strong> <br>
             </div>
         </div>
         {% endfor %}

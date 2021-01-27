@@ -50,6 +50,7 @@ def register():
         })
         session["user"] = request.form.get("username").lower()
         flash("Registration successful, you are now logged in")
+        return redirect(url_for('user_profile'))
         
 
     return render_template('pages/user-authentication.html', register=True)
@@ -72,6 +73,7 @@ def login():
                 existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome back! {}".format(request.form.get("username")))
+                return redirect(url_for('user_profile'))
             else:
                 # invalid password match
                 flash("Incorrect username or password")

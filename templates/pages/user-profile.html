@@ -2,13 +2,13 @@
 {% include 'components/navigation/navbar.html' %}
 {% include 'components/flash_messages/flash-messages.html' %}
 {% block content %}
-    <h2 class="page-header">Your Profile</h2>
+    <h2 class="page-header">All Your feedback in one place</h2>
     {% for feedback in feedbacks %}
         <div class="row">
             <div class="col-12 therapist-card">
                 Title: <strong>{{ feedback.title }}</strong> <br>  
                 Review: <strong>{{ feedback.review_description }}</strong> <br>
-                Therapist: <strong>{{ feedback.therapist_id }}</strong> <br>
+                Therapist: <strong>{{ feedback.therapist_id.title() }}</strong> <br>
             </div>
         </div>
     {% endfor %}

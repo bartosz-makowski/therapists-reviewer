@@ -5,7 +5,7 @@
                 <label class="form-label" for="select-therapist">Select therapist</label>
                 <select class="form-select" id="select-therapist" name="select-therapist" aria-label="select therapist" required>
                     {% for therapist in therapists %}
-                        <option value="{{ therapist._id }}">{{ therapist.first_name.capitalize() }}  {{ therapist.last_name.capitalize() }}</option>
+                        <option value="{{ therapist.first_name }} {{ therapist.last_name }}">{{ therapist.first_name.capitalize() }}  {{ therapist.last_name.capitalize() }}</option>
                     {% endfor %}
                 </select>
             </div>
