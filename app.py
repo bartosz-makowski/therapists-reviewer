@@ -98,7 +98,8 @@ def logout():
 
 @app.route('/user_profile')
 def user_profile():
-    return render_template('/pages/user-profile.html')
+    feedbacks = mongo.db.reviews.find({"user": session["user"]})
+    return render_template('/pages/user-profile.html', feedbacks=feedbacks)
 
 
 @app.route('/leave_feedback', methods=["GET", "POST"])
