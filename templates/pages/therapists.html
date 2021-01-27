@@ -2,7 +2,7 @@
 {% block content %}
     {% include 'components/navbar.html' %}
     {% include 'components/flash_messages/flash-messages.html' %}
-    <h2 id="therapists-h">Available Therapists</h2>
+    <h2 class="page-header">Available Therapists</h2>
         {% for therapist in therapists %}
         <div class="row">
             <div class="col-12 therapist-card">

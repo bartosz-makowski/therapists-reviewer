@@ -2,5 +2,10 @@
 {% block content %}
 {% include 'components/navbar.html' %}
 {% include 'components/flash_messages/flash-messages.html' %}
+{% if register==True %}
+    <h2 class="page-header">Rgister</h2>
+{% else %}
+    <h2 class="page-header">Log In</h2>
+{% endif %}
 {% include 'components/forms/authentication.html' %}
 {% endblock %}

@@ -11,6 +11,15 @@ body {
 }
 
 
+/* pages header */
+
+.page-header {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-top: 35px;
+}
+
+
 /* Navbar */
 
 
@@ -29,11 +38,6 @@ body {
 
 /* therapists */
 
-#therapists-h {
-    font-size: 2.8rem;
-    text-align: center;
-    margin-top: 35px;
-}
 
 .therapist-card {
     font-size: 2rem;
