@@ -11,5 +11,6 @@
                 Therapist: <strong>{{ feedback.therapist_id.title() }}</strong> <br>
             </div>
         </div>
+        <a href="{{url_for('delete_review', feedback_id=feedback._id)}}" class="btn btn-primary">Delete this review</a>
     {% endfor %}
 {% endblock %}

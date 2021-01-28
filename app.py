@@ -122,6 +122,16 @@ def leave_feedback():
     therapists = mongo.db.therapists.find()
     return render_template('pages/leave-feedback.html', therapists=therapists)
 
+
+
+@app.route('/delete_review/<feedback_id>')
+def delete_review(feedback_id):
+    mongo.db.reviews.remove({"_id": ObjectId(feedback_id)})
+    flash("Review successfully deleted")
+    return redirect(url_for('user_profile'))
+    
+
+
 @app.route('/get_therapists')
 def get_therapists():
     """
