@@ -100,12 +100,20 @@ def logout():
 
 @app.route('/user_profile')
 def user_profile():
+    """
+    Redirects user to their profile
+    page where all reviews from this user can be seen
+    """
     feedbacks = mongo.db.reviews.find({"user": session["user"]})
     return render_template('/pages/user-profile.html', feedbacks=feedbacks)
 
 
 @app.route('/leave_feedback', methods=["GET", "POST"])
 def leave_feedback():
+    """
+    Allows a user to leave a review for a therapist
+    Redirects to leave-feedback page
+    """
     if request.method == "POST":
         would_recommend = "on" if request.form.get('would_recommend') else "off"
         review = {
@@ -127,7 +135,7 @@ def leave_feedback():
 @app.route('/delete_review/<feedback_id>')
 def delete_review(feedback_id):
     """
-    Alows a user to remove their review
+    Allows a user to remove their review
     Redirects user to their profile page where all their reviews can be seen
     """
     mongo.db.reviews.remove({"_id": ObjectId(feedback_id)})
@@ -139,7 +147,7 @@ def delete_review(feedback_id):
 @app.route('/get_therapists')
 def get_therapists():
     """
-    Function to load list of therapists with their details from the db 
+    Loads a list of therapists with their details from the db 
     """
     therapists = mongo.db.therapists.find()
     return render_template('pages/therapists.html', therapists=therapists)
@@ -157,6 +165,9 @@ def therapist_profile(therapist_id, feedback_id):
 
 @app.route('/recommendations')
 def recommendations():
+    """
+    redirects user to recommendations page
+    """
     return render_template('pages/recommendations.html')
 
 
