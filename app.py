@@ -141,6 +141,12 @@ def get_therapists():
     return render_template('pages/therapists.html', therapists=therapists)
 
 
+@app.route('/therapist_profile,<therapist_id>')
+def therapist_profile(therapist_id):
+    therapist = mongo.db.therapists.find_one({"_id": ObjectId(therapist_id)})
+    return render_template('pages/therapist-profile.html', therapist=therapist)
+
+
 @app.route('/recommendations')
 def recommendations():
     return render_template('pages/recommendations.html')

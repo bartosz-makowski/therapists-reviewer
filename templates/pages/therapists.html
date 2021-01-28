@@ -6,13 +6,19 @@
         {% for therapist in therapists %}
         <div class="row">
             <div class="col-12 therapist-card">
-                First Name: <strong>{{ therapist.first_name.capitalize() }}</strong> <br>  
-                Second Name: <strong>{{ therapist.last_name.capitalize() }}</strong> <br>
-                Email: <strong>{{ therapist.email }}</strong> <br>
-                Webpage: <strong><a href="#">{{ therapist.webpage }}</a></strong> <br>
-                Main Therapy: <strong>{{ therapist.main_therapy.capitalize() }}</strong> <br>
-                Other Therapies: <strong>{{ therapist.other_therapies.capitalize() }}</strong> <br>
-                Location: <strong>{{ therapist.location.title() }}</strong> <br>
+                <p>Name: <strong>{{ therapist.first_name.capitalize() }}</strong> <br>
+                    Second Name: <strong>{{ therapist.last_name.capitalize() }}</strong> <br>
+                    Email: <strong>{{ therapist.email }}</strong> <br>
+                    Webpage: <strong><a href="#">{{ therapist.webpage }}</a></strong> <br>
+                    Main Therapy: <strong>{{ therapist.main_therapy.capitalize() }}</strong> <br>
+                    Other Therapies: <strong>{{ therapist.other_therapies.capitalize() }}</strong> <br>
+                    Location: <strong>{{ therapist.location.title() }}</strong> <br>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <a href="{{url_for('therapist_profile', therapist_id=therapist._id)}}" class="btn btn-primary">More info</a>
             </div>
         </div>
         {% endfor %}
