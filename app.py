@@ -126,6 +126,10 @@ def leave_feedback():
 
 @app.route('/delete_review/<feedback_id>')
 def delete_review(feedback_id):
+    """
+    Alows a user to remove their review
+    Redirects user to their profile page where all their reviews can be seen
+    """
     mongo.db.reviews.remove({"_id": ObjectId(feedback_id)})
     flash("Review successfully deleted")
     return redirect(url_for('user_profile'))
@@ -135,16 +139,20 @@ def delete_review(feedback_id):
 @app.route('/get_therapists')
 def get_therapists():
     """
-    function to load list of therapists from db
+    Function to load list of therapists with their details from the db 
     """
     therapists = mongo.db.therapists.find()
     return render_template('pages/therapists.html', therapists=therapists)
 
 
-@app.route('/therapist_profile,<therapist_id>')
-def therapist_profile(therapist_id):
+@app.route('/therapist_profile/<therapist_id>/<feedback_id>')
+def therapist_profile(therapist_id, feedback_id):
+    """
+    Shows a therapist's porfile page with their reviews 
+    """
     therapist = mongo.db.therapists.find_one({"_id": ObjectId(therapist_id)})
-    return render_template('pages/therapist-profile.html', therapist=therapist)
+    feedback = mongo.db.reviews.find({"therapist_id": feedback_id})
+    return render_template('pages/therapist-profile.html', therapist=therapist, feedback=feedback)
 
 
 @app.route('/recommendations')

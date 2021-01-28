@@ -18,7 +18,7 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <a href="{{url_for('therapist_profile', therapist_id=therapist._id)}}" class="btn btn-primary">More info</a>
+                <a href="{{url_for('therapist_profile', therapist_id=therapist._id, feedback_id=therapist.therapist_id)}}" class="btn btn-primary">More info</a>
             </div>
         </div>
         {% endfor %}

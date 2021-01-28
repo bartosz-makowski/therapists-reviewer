@@ -2,12 +2,21 @@
 {% block content %}
 {% include 'components/navigation/navbar.html' %}
 {% include 'components/flash_messages/flash-messages.html' %}
-<h2 class="page-header">{{ therapist.first_name.capitalize() }} {{ therapist.last_name.capitalize() }}</h2>
-<p>
-    Email: <strong>{{ therapist.email }}</strong> <br>
-    Webpage: <strong><a href="#">{{ therapist.webpage }}</a></strong> <br>
-    Main Therapy: <strong>{{ therapist.main_therapy.capitalize() }}</strong> <br>
-    Other Therapies: <strong>{{ therapist.other_therapies.capitalize() }}</strong> <br>
-    Location: <strong>{{ therapist.location.title() }}</strong> <br>
-</p>
+    <h2 class="page-header">{{ therapist.first_name.capitalize() }} {{ therapist.last_name.capitalize() }}</h2>
+    <p>
+        Email: <strong>{{ therapist.email }}</strong> <br>
+        Webpage: <strong><a href="#">{{ therapist.webpage }}</a></strong> <br>
+        Main Therapy: <strong>{{ therapist.main_therapy.capitalize() }}</strong> <br>
+        Other Therapies: <strong>{{ therapist.other_therapies.capitalize() }}</strong> <br>
+        Location: <strong>{{ therapist.location.title() }}</strong> <br>
+    </p>
+    {% for f in feedback %}
+        <div class="row">
+            <div class="col-12 therapist-card">
+                Title: <strong>{{ f.title }}</strong> <br>
+                Review: <strong>{{ f.review_description }}</strong> <br>
+                Therapist: <strong>{{ f.therapist_id.title() }}</strong> <br>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
