@@ -115,7 +115,6 @@ def leave_feedback():
     Redirects to leave-feedback page
     """
     if request.method == "POST":
-        would_recommend = "on" if request.form.get('would_recommend') else "off"
         review = {
             "user": session["user"],
             'title': request.form.get('title'),
@@ -133,13 +132,23 @@ def leave_feedback():
 
 @app.route('/update_review/<feedback_id>', methods=["GET", "POST"])
 def update_review(feedback_id):
+    if request.method == "POST":
+        new_review = {
+            "user": session["user"],
+            'title': request.form.get('title'),
+            'email': request.form.get('email'),
+            'review_description': request.form.get('review_description'),
+            'therapist_id': request.form.get('select-therapist')
+        }
+        mongo.db.reviews.update({"_id": ObjectId(feedback_id)},new_review)
+        flash("Feedback successfully updated")
+        return redirect(url_for('user_profile'))
+
     therapists = mongo.db.therapists.find()
     feedback = mongo.db.reviews.find_one({"_id": ObjectId(feedback_id)})
-    
     return render_template(
         '/pages/update-review.html',
         feedback=feedback,
-        
         therapists=therapists
         )
 
