@@ -5,7 +5,7 @@
                 <label class="form-label" for="select-therapist">Select therapist</label>
                 <select class="form-select" id="select-therapist" name="select-therapist" aria-label="select therapist" required>
                     {% for therapist in therapists %}
-                        <option value="{{ therapist.first_name }} {{ therapist.last_name }}">{{ therapist.first_name.capitalize() }}  {{ therapist.last_name.capitalize() }}</option>
+                        <option value="{{ therapist.therapist_id }}">{{ therapist.therapist_id.title() }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -20,10 +20,6 @@
             <div class="col-8">
                 <label class="form-label" for="review_description">Your feedback...</label>
                 <textarea class="form-control" id="review_description" name="review_description" aria-label="textarea" required></textarea>
-            </div>
-            <div class="form-check form-switch col-8">
-                <label class="form-label" for="would_recommend">Would you recommend this therapists?</label>
-                <input class="form-check-input" type="checkbox" id="would_recommend" name="would_recommend">
             </div>
             <div class="row justify-content-center">
                 <div class="col-8 text-align-center">

@@ -119,8 +119,8 @@ def leave_feedback():
         review = {
             "user": session["user"],
             'title': request.form.get('title'),
+            'email': request.form.get('email'),
             'review_description': request.form.get('review_description'),
-            'would_recommend': would_recommend,
             'therapist_id': request.form.get('select-therapist')
         }
         mongo.db.reviews.insert_one(review)
@@ -133,13 +133,14 @@ def leave_feedback():
 
 @app.route('/update_review/<feedback_id>', methods=["GET", "POST"])
 def update_review(feedback_id):
+    therapists = mongo.db.therapists.find()
     feedback = mongo.db.reviews.find_one({"_id": ObjectId(feedback_id)})
-
-    reviews = mongo.db.reviews.find({"user": session["user"]})
+    
     return render_template(
         '/pages/update-review.html',
-        feedback_id=feedback_id,
-        reviews=reviews
+        feedback=feedback,
+        
+        therapists=therapists
         )
 
 
