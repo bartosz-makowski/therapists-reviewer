@@ -131,6 +131,17 @@ def leave_feedback():
     return render_template('pages/leave-feedback.html', therapists=therapists)
 
 
+@app.route('/update_review/<feedback_id>', methods=["GET", "POST"])
+def update_review(feedback_id):
+    feedback = mongo.db.reviews.find_one({"_id": ObjectId(feedback_id)})
+
+    reviews = mongo.db.reviews.find({"user": session["user"]})
+    return render_template(
+        '/pages/update-review.html',
+        feedback_id=feedback_id,
+        reviews=reviews
+        )
+
 
 @app.route('/delete_review/<feedback_id>')
 def delete_review(feedback_id):
