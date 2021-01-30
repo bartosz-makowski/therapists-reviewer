@@ -1,6 +1,6 @@
 import os
-from flask import (Flask, flash, 
-    render_template, redirect, 
+from flask import (Flask, flash,
+    render_template, redirect,
     request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -30,7 +30,7 @@ def home():
 def register():
     """
     Allows the user to register at the website
-    Checks if user already exists in the DB 
+    Checks if user already exists in the DB
     redirects user to homepage
     """
     if request.method == "POST":
@@ -40,10 +40,8 @@ def register():
         if existing_user:
             flash("Username is already in our database")
             return redirect(url_for('register'))
-        
         username = request.form.get("username").lower()
         password = generate_password_hash(request.form.get("password"))
-
         mongo.db.users.insert_one({
             'username': username,
             'password': password
@@ -51,8 +49,6 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Registration successful, you are now logged in")
         return redirect(url_for('user_profile'))
-        
-
     return render_template('pages/user-authentication.html', register=True)
 
 
@@ -66,11 +62,10 @@ def login():
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-        
         if existing_user:
             # check if username in db
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+                    existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome back! {}".format(request.form.get("username")))
                 return redirect(url_for('user_profile'))
@@ -78,7 +73,6 @@ def login():
                 # invalid password match
                 flash("Incorrect username or password")
                 return redirect(url_for('register'))
-            
         else:
             # username doesn't exist
             flash("Incorrect username or password")
@@ -132,6 +126,9 @@ def leave_feedback():
 
 @app.route('/update_review/<feedback_id>', methods=["GET", "POST"])
 def update_review(feedback_id):
+    """
+    Allows user to update changes to their review
+    """
     if request.method == "POST":
         new_review = {
             "user": session["user"],
@@ -140,7 +137,7 @@ def update_review(feedback_id):
             'review_description': request.form.get('review_description'),
             'therapist_id': request.form.get('select-therapist')
         }
-        mongo.db.reviews.update({"_id": ObjectId(feedback_id)},new_review)
+        mongo.db.reviews.update({"_id": ObjectId(feedback_id)}, new_review)
         flash("Feedback successfully updated")
         return redirect(url_for('user_profile'))
 
@@ -150,7 +147,7 @@ def update_review(feedback_id):
         '/pages/update-review.html',
         feedback=feedback,
         therapists=therapists
-        )
+    )
 
 
 @app.route('/delete_review/<feedback_id>')
@@ -162,13 +159,12 @@ def delete_review(feedback_id):
     mongo.db.reviews.remove({"_id": ObjectId(feedback_id)})
     flash("Review successfully deleted")
     return redirect(url_for('user_profile'))
-    
 
 
 @app.route('/get_therapists')
 def get_therapists():
     """
-    Loads a list of therapists with their details from the db 
+    Loads a list of therapists with their details from the db
     """
     therapists = mongo.db.therapists.find()
     return render_template('pages/therapists.html', therapists=therapists)
@@ -177,17 +173,20 @@ def get_therapists():
 @app.route('/therapist_profile/<therapist_id>/<feedback_id>')
 def therapist_profile(therapist_id, feedback_id):
     """
-    Shows a therapist's porfile page with their reviews 
+    Shows a therapist's porfile page with their reviews
     """
     therapist = mongo.db.therapists.find_one({"_id": ObjectId(therapist_id)})
     feedback = mongo.db.reviews.find({"therapist_id": feedback_id})
-    return render_template('pages/therapist-profile.html', therapist=therapist, feedback=feedback)
+    return render_template('pages/therapist-profile.html',
+                           therapist=therapist,
+                           feedback=feedback
+                           )
 
 
 @app.route('/recommendations')
 def recommendations():
     """
-    redirects user to recommendations page
+    Redirects user to recommendations page
     """
     return render_template('pages/recommendations.html')
 
