@@ -10,8 +10,19 @@ body {
     font-size: 1.6rem;
 }
 
+/* Home Page */
 
-/* pages header */
+#home-h1 {
+    font-size: 3rem;
+}
+
+
+#home-h2 {
+    font-size: 2.8rem;
+    text-align: center;
+}
+
+/* Pages Header */
 
 .page-header {
     font-size: 2.8rem;
@@ -36,7 +47,7 @@ body {
 }
 
 
-/* therapists */
+/* Therapists */
 
 
 .therapist-card {
