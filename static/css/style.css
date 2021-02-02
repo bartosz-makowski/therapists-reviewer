@@ -79,10 +79,29 @@ body {
 .btn {
     font-size: 2rem;
     margin-top: 2rem;
+    background-color: #072ac8;
 }
 
+.btn-cancel {
+    background-color: #c80707;
+    border-color: #fafafa;
+}
 
+.btn-cancel:hover {
+    background-color: #a30000fa;
+    border-color: #fafafa;
+}
 
+.btn-cancel:active {
+    background-color: #a30000fa;
+    border-color: #fafafa;
+}
+
+.btn-cancel:focus {
+    background-color: #a30000fa;
+    border-color: #fafafa;
+    box-shadow: 0 0 0 0.25rem #c75353;
+}
 
 
 
