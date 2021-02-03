@@ -61,11 +61,11 @@ body {
 /* Forms */
 
 .form-control {
-    font-size: calc(2rem + .9vw);
+    font-size: calc(1rem + .9vw);
 }
 
 .form-select {
-    font-size: calc(1.8rem + .7vw);
+    font-size: calc(1rem + .7vw);
 }
 
 .form-container {
