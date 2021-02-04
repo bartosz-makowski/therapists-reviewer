@@ -72,6 +72,15 @@ body {
     margin-top: 5rem;
 }
 
+
+/* Authentication */
+
+.authentication-h5 {
+    font-size: calc(1rem + .8vw);
+    margin-top: 3rem;
+}
+
+
 /* Buttons */
 
 .btn {
