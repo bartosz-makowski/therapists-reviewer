@@ -62,7 +62,7 @@ The goal of this project is to provide the users with a website where they can s
 ## Design choices :framed_picture:	
   
 **Fonts**
-
+I chose to use the font **Lato** as it was designed with a neutral, yet friendly appearance which compliments the general attitude of this project's design and it's desired function. it can be found [here](https://fonts.google.com/specimen/Lato?sidebar.open=true&selection.family=Lato&preview.text_type=custom#standard-styles).The semi-rounded details of the letters give **Lato** a feeling of warmth, while the strong structure provides stability and seriousness. “Male and female, serious but friendly. With the feeling of the Summer,” says Łukasz.
 
 **Colours**
 
