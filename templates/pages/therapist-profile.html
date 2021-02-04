@@ -3,13 +3,20 @@
 {% include 'components/navigation/navbar.html' %}
 {% include 'components/flash_messages/flash-messages.html' %}
     <h2 class="page-header">{{ therapist.first_name.capitalize() }} {{ therapist.last_name.capitalize() }}</h2>
-    <p>
-        Email: <strong>{{ therapist.email }}</strong> <br>
-        Webpage: <strong><a href="#">{{ therapist.webpage }}</a></strong> <br>
-        Main Therapy: <strong>{{ therapist.main_therapy.capitalize() }}</strong> <br>
-        Other Therapies: <strong>{{ therapist.other_therapies.capitalize() }}</strong> <br>
-        Location: <strong>{{ therapist.location.title() }}</strong> <br>
-    </p>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+            <img class="therapist-img" src="/static/images/therapists/{{therapist.first_name}}_{{therapist.last_name}}.png" alt="therapist's picture">
+        </div>
+        <div class="col-12 col-md-6">
+            <p>
+                Email: <strong>{{ therapist.email }}</strong> <br>
+                Webpage: <strong><a href="#">{{ therapist.webpage }}</a></strong> <br>
+                Main Therapy: <strong>{{ therapist.main_therapy.capitalize() }}</strong> <br>
+                Other Therapies: <strong>{{ therapist.other_therapies.capitalize() }}</strong> <br>
+                Location: <strong>{{ therapist.location.title() }}</strong> <br>
+            </p>
+        </div>
+    </div>
     {% for f in feedback %}
         <div class="row">
             <div class="col-12 therapist-card">
