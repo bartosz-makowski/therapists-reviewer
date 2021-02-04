@@ -72,11 +72,11 @@ def login():
             else:
                 # invalid password match
                 flash("Incorrect username or password")
-                return redirect(url_for('register'))
+                return redirect(url_for('login'))
         else:
             # username doesn't exist
             flash("Incorrect username or password")
-            return redirect(url_for('register'))
+            return redirect(url_for('login'))
 
     return render_template('pages/user-authentication.html')
 
