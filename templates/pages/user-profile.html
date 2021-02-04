@@ -1,17 +1,17 @@
 {% extends 'layout/base.html' %}
-{% include 'components/navigation/navbar.html' %}
-{% include 'components/flash_messages/flash-messages.html' %}
 {% block content %}
-    <h2 class="page-header">All Your feedback in one place</h2>
-    {% for feedback in feedbacks %}
-        <div class="row">
-            <div class="col-12 therapist-card">
-                Title: <strong>{{ feedback.title }}</strong> <br>  
-                Review: <strong>{{ feedback.review_description }}</strong> <br>
-                Therapist: <strong>{{ feedback.therapist_id.title() }}</strong> <br>
+    {% include 'components/navigation/navbar.html' %}
+    {% include 'components/flash_messages/flash-messages.html' %}
+        <h2 class="page-header">All Your feedback in one place</h2>
+        {% for feedback in feedbacks %}
+            <div class="row">
+                <div class="col-12 therapist-card">
+                    Title: <strong>{{ feedback.title }}</strong> <br>  
+                    Review: <strong>{{ feedback.review_description }}</strong> <br>
+                    Therapist: <strong>{{ feedback.therapist_id.title() }}</strong> <br>
+                </div>
             </div>
-        </div>
-        <a href="{{url_for('update_review', feedback_id=feedback._id)}}" class="btn btn-primary">Edit this review</a>
-        <a href="{{url_for('delete_review', feedback_id=feedback._id)}}" class="btn btn-primary btn-cancel">Delete this review</a>
-    {% endfor %}
+            <a href="{{url_for('update_review', feedback_id=feedback._id)}}" class="btn btn-primary">Edit this review</a>
+            <a href="{{url_for('delete_review', feedback_id=feedback._id)}}" class="btn btn-primary btn-cancel">Delete this review</a>
+        {% endfor %}
 {% endblock %}
