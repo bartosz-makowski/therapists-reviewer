@@ -38,7 +38,7 @@ The goal of this project is to provide the users with a website where they can s
 * As a user I want to be able to **search practitioners by location or therapies**
 * As a user I want to be able to **setup an account to be able to leave reviews**
 * As a user I want to be able to **see profiles of the therapists**
-* As a user I expect to **be able to say if I recommend the therapist**
+* As a user I expect to **be able to create, read, update and delete my reviews**
 
 ## Site Owner Goals	:dart:
 
@@ -64,7 +64,7 @@ The goal of this project is to provide the users with a website where they can s
 I chose to use the font **Lato** as it was designed with a neutral, yet friendly appearance which compliments the general attitude of this project's design and it's desired function. it can be found [here](https://fonts.google.com/specimen/Lato?sidebar.open=true&selection.family=Lato&preview.text_type=custom#standard-styles).The semi-rounded details of the letters give **Lato** a feeling of warmth, while the strong structure provides stability and seriousness. “Male and female, serious but friendly. With the feeling of the Summer,” says Łukasz.
 
 **Colours**
-Using learned knowledge from prior research, bright and vibrant colours have a higher influence in terms of positivity and therefore more potential interactions. [Link to the colour palette](https://coolors.co/072ac8-1e96fc-c80707-f0c14b-fafafa). Screenshot of the colour palette has been added to the wireframes [folder](#).
+Using learned knowledge from prior research, bright and vibrant colours have a higher influence in terms of positivity and therefore more potential interactions. [Link to the colour palette](https://coolors.co/072ac8-1e96fc-c80707-f0c14b-fafafa). Screenshot of the colour palette has been added to the wireframes [folder](https://github.com/bartosz-makowski/therapists-reviewer/blob/master/wireframes/therapists-reviewer-palette.png).
 
 **Colours used**
 
@@ -89,6 +89,7 @@ password | String
 Key             | Value
 ----------------|-----------
 _id             | ObjectId
+therapist_id    | String
 first_name      | String
 second_name     | String
 email           | String
@@ -96,7 +97,7 @@ webpage         | String
 main_therapy    | String
 other_therapies | String
 location        | String
-reviews         | Array
+therapist_bio   | String
 
 #### **Reviews:**
 
@@ -105,9 +106,9 @@ Key                | Value
 _id                | ObjectId
 user               | String
 title              | String
+email              | String
 review_description | String
-would_recommend    | String
-
+therapist_id       | String
 
 ## Features :abacus:
 
