@@ -38,7 +38,7 @@ The goal of this project is to provide the users with a website where they can s
 * As a user I want to be able to **search practitioners by location or therapies**
 * As a user I want to be able to **setup an account to be able to leave reviews**
 * As a user I want to be able to **see profiles of the therapists**
-* As a user I expect to **be able to say if I recommend the therapist**
+* As a user I expect to **be able to create, read, update and delete my reviews**
 
 ## Site Owner Goals	:dart:
 
