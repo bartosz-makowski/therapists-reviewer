@@ -113,6 +113,12 @@ therapist_id       | String
 ## Features :abacus:
 
 **Features that have been developed:**
+* Registration of a new user
+* Log in / Log out function
+* Password and username validation
+* CRUD functionality for the reviews
+* Visible feedback when hover over buttons, links and icons
+* Buttons and <a> tags styled using [neumorphism](https://css-tricks.com/neumorphism-and-css/) style
 
 **Features to be implemented in the future**
 
