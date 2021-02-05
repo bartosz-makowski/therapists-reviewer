@@ -118,7 +118,7 @@ therapist_id       | String
 * Password and username validation
 * CRUD functionality for the reviews
 * Visible feedback when hover over buttons, links and icons
-* Buttons and <a> tags styled using [neumorphism](https://css-tricks.com/neumorphism-and-css/) style
+* Buttons and `<a>` tags styled using [neumorphism](https://css-tricks.com/neumorphism-and-css/) style
 
 **Features to be implemented in the future**
 
