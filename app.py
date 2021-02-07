@@ -92,7 +92,7 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('/user_profile')
+@app.route('/myaccount')
 def user_profile():
     """
     Redirects user to their profile
@@ -102,7 +102,29 @@ def user_profile():
     return render_template('/pages/user-profile.html', feedbacks=feedbacks)
 
 
-@app.route('/leave_feedback', methods=["GET", "POST"])
+@app.route('/therapists')
+def get_therapists():
+    """
+    Loads a list of therapists with their details from the db
+    """
+    therapists = mongo.db.therapists.find()
+    return render_template('pages/therapists.html', therapists=therapists)
+
+
+@app.route('/therapist/profile/<therapist_id>/<feedback_id>')
+def therapist_profile(therapist_id, feedback_id):
+    """
+    Shows a therapist's porfile page with their reviews
+    """
+    therapist = mongo.db.therapists.find_one({"_id": ObjectId(therapist_id)})
+    feedback = mongo.db.reviews.find({"therapist_id": feedback_id})
+    return render_template('pages/therapist-profile.html',
+                           therapist=therapist,
+                           feedback=feedback
+                           )
+
+
+@app.route('/leave-review', methods=["GET", "POST"])
 def leave_feedback():
     """
     Allows a user to leave a review for a therapist
@@ -124,7 +146,7 @@ def leave_feedback():
     return render_template('pages/leave-feedback.html', therapists=therapists)
 
 
-@app.route('/update_review/<feedback_id>', methods=["GET", "POST"])
+@app.route('/update-review/<feedback_id>', methods=["GET", "POST"])
 def update_review(feedback_id):
     """
     Allows user to update changes to their review
@@ -150,7 +172,7 @@ def update_review(feedback_id):
     )
 
 
-@app.route('/delete_review/<feedback_id>')
+@app.route('/delete-review/<feedback_id>')
 def delete_review(feedback_id):
     """
     Allows a user to remove their review
@@ -159,28 +181,6 @@ def delete_review(feedback_id):
     mongo.db.reviews.remove({"_id": ObjectId(feedback_id)})
     flash("Review successfully deleted")
     return redirect(url_for('user_profile'))
-
-
-@app.route('/get_therapists')
-def get_therapists():
-    """
-    Loads a list of therapists with their details from the db
-    """
-    therapists = mongo.db.therapists.find()
-    return render_template('pages/therapists.html', therapists=therapists)
-
-
-@app.route('/therapist_profile/<therapist_id>/<feedback_id>')
-def therapist_profile(therapist_id, feedback_id):
-    """
-    Shows a therapist's porfile page with their reviews
-    """
-    therapist = mongo.db.therapists.find_one({"_id": ObjectId(therapist_id)})
-    feedback = mongo.db.reviews.find({"therapist_id": feedback_id})
-    return render_template('pages/therapist-profile.html',
-                           therapist=therapist,
-                           feedback=feedback
-                           )
 
 
 if __name__ == '__main__':
