@@ -47,10 +47,10 @@
             <!-- Review description -->
             <div class="col-8">
                 {% if update %}
-                    <label class="form-label" for="review_description">Your feedback...</label>
+                    <label class="form-label" for="review_description">Your review...</label>
                     <textarea class="form-control" id="review_description" name="review_description" aria-label="textarea" required>{{ feedback.review_description }}</textarea>
                 {% else %}
-                    <label class="form-label" for="review_description">Your feedback...</label>
+                    <label class="form-label" for="review_description">Your review...</label>
                     <textarea class="form-control" id="review_description" name="review_description" aria-label="textarea" required></textarea>
                 {% endif %}
             </div>
@@ -64,7 +64,7 @@
                         <a class="btn btn-primary btn-cancel" href="{{ url_for('myaccount') }}">Cancel changes</a>
                     </div>
                 {% else %}
-                    <div class="col-8"></div>
+                    <div class="col-8">
                         <button class="btn btn-primary" type="submit">Add review</button>
                     </div>    
                 {% endif %}
