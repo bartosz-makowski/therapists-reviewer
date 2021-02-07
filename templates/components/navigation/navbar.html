@@ -9,8 +9,8 @@
                 <a class="nav-link" href="{{ url_for('home') }}">Home</a>
                 {% if session.user %}
                     <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
-                    <a class="nav-link" href="{{ url_for('write_review') }}">Leave Feedback</a>
-                    <a class="nav-link" href="{{url_for('myaccount')}}">Your Profile</a>
+                    <a class="nav-link" href="{{ url_for('write_review') }}">Write review</a>
+                    <a class="nav-link" href="{{url_for('myaccount')}}">My account</a>
                 {% else %}
                     <a class="nav-link" href="{{ url_for('register') }}">Register</a>
                     <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
