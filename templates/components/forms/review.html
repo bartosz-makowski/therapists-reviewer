@@ -1,30 +1,73 @@
-<form method="POST" action="{{ url_for('leave_feedback') }}">
+{% if update %}
+    <form method="POST" action="{{ url_for('update_review', feedback_id=feedback._id) }}"></form>
+{% else %}
+    <form method="POST" action="{{ url_for('leave_feedback') }}"></form>
+{% endif %}
     <div class="container form-container">
         <div class="row justify-content-center">
             <div class="col-8">
+                <!-- Therapist selector -->
                 <label class="form-label" for="select-therapist">Select therapist</label>
                 <select class="form-select" id="select-therapist" name="select-therapist" aria-label="select therapist" required>
-                    {% for therapist in therapists %}
-                        <option value="{{ therapist.therapist_id }}">{{ therapist.therapist_id.title() }}</option>
-                    {% endfor %}
+                    {% if update %}
+                        {% for therapist in therapists %}
+                            {% if therapist.therapist_id == feedback.therapist_id %}
+                                <option value="{{ therapist.therapist_id }}" selected>{{ therapist.therapist_id.title() }}</option>
+                            {% else %}
+                                <option value="{{ therapist.therapist_id }}">{{ therapist.therapist_id.title() }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        {% for therapist in therapists %}
+                            <option value="{{ therapist.therapist_id }}">{{ therapist.therapist_id.title() }}</option>
+                        {% endfor %}
+                    {% endif %}
                 </select>
             </div>
+            <!-- Email address -->
             <div class="col-8">
-                <label class="form-label" for="email">Your email address</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="email">
+                {% if update %}
+                    <label class="form-label" for="email">Your email address</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ feedback.email }}" aria-describedby="email">
+                {% else %}
+                    <label class="form-label" for="email">Your email address</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="email">
+                {% endif %}
             </div>
+            <!-- Review title -->
             <div class="col-8">
-                <label class="form-label" for="title">Review title</label>
-                <input type="text" class="form-control" id="title" name="title" aria-describedby="review title" required>
+                {% if update %}
+                    <label class="form-label" for="title">Review title</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ feedback.title }}" aria-describedby="review title" required>
+                {% else %}                
+                    <label class="form-label" for="title">Review title</label>
+                    <input type="text" class="form-control" id="title" name="title" aria-describedby="review title" required>
+                {% endif %}
             </div>
+            <!-- Review description -->
             <div class="col-8">
-                <label class="form-label" for="review_description">Your feedback...</label>
-                <textarea class="form-control" id="review_description" name="review_description" aria-label="textarea" required></textarea>
+                {% if update %}
+                    <label class="form-label" for="review_description">Your feedback...</label>
+                    <textarea class="form-control" id="review_description" name="review_description" aria-label="textarea" required>{{ feedback.review_description }}</textarea>
+                {% else %}
+                    <label class="form-label" for="review_description">Your feedback...</label>
+                    <textarea class="form-control" id="review_description" name="review_description" aria-label="textarea" required></textarea>
+                {% endif %}
             </div>
+            <!-- Buttons -->
             <div class="row justify-content-center">
-                <div class="col-8">
-                    <button class="btn btn-primary" type="submit">Add feedback</button>
-                </div>
+                {% if update %}
+                    <div class="col-8 text-align-center">
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                    </div>
+                    <div class="col-8 text-align-center">
+                        <a class="btn btn-primary btn-cancel" href="{{ url_for('user_profile') }}">Cancel changes</a>
+                    </div>
+                {% else %}
+                    <div class="col-8"></div>
+                        <button class="btn btn-primary" type="submit">Add feedback</button>
+                    </div>    
+                {% endif %}
             </div>
         </div>
     </div>

@@ -124,7 +124,7 @@ def therapist_profile(therapist_id, feedback_id):
                            )
 
 
-@app.route('/leave-review', methods=["GET", "POST"])
+@app.route('/write-review', methods=["GET", "POST"])
 def leave_feedback():
     """
     Allows a user to leave a review for a therapist
@@ -166,9 +166,10 @@ def update_review(feedback_id):
     therapists = mongo.db.therapists.find()
     feedback = mongo.db.reviews.find_one({"_id": ObjectId(feedback_id)})
     return render_template(
-        '/pages/update-review.html',
+        '/pages/leave-feedback.html',
         feedback=feedback,
-        therapists=therapists
+        therapists=therapists,
+        update=True
     )
 
 

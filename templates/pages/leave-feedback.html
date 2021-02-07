@@ -2,6 +2,10 @@
 {% block content %}
     {% include 'components/navigation/navbar.html' %}
     {% include 'components/flash_messages/flash-messages.html' %}
-    <h2 class="page-header">Leave Feedback</h2>
+        {% if update %}
+            <h2 class="page-header">Edit review</h2>
+        {% else %}
+            <h2 class="page-header">Write review</h2>
+        {% endif %}
     {% include 'components/forms/review.html' %}
 {% endblock %}
