@@ -18,7 +18,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 @app.route('/')
-@app.route('/home')
 def home():
     """
     Function to load the homepage
@@ -183,17 +182,7 @@ def therapist_profile(therapist_id, feedback_id):
                            )
 
 
-@app.route('/recommendations')
-def recommendations():
-    """
-    Redirects user to recommendations page
-    """
-    return render_template('pages/recommendations.html')
-
-
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
-
-
+            debug=os.environ.get('debug'))
