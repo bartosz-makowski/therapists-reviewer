@@ -48,7 +48,7 @@ def register():
         })
         session["user"] = request.form.get("username").lower()
         flash("Registration successful, you are now logged in")
-        return redirect(url_for('user_profile'))
+        return redirect(url_for('myaccount'))
     return render_template('pages/user-authentication.html', register=True)
 
 
