@@ -1,7 +1,7 @@
 {% if update %}
-    <form method="POST" action="{{ url_for('update_review', feedback_id=feedback._id) }}"></form>
+    <form method="POST" action="{{ url_for('update_review', feedback_id=feedback._id) }}">
 {% else %}
-    <form method="POST" action="{{ url_for('leave_feedback') }}"></form>
+    <form method="POST" action="{{ url_for('write_review') }}">
 {% endif %}
     <div class="container form-container">
         <div class="row justify-content-center">
@@ -65,7 +65,7 @@
                     </div>
                 {% else %}
                     <div class="col-8"></div>
-                        <button class="btn btn-primary" type="submit">Add feedback</button>
+                        <button class="btn btn-primary" type="submit">Add review</button>
                     </div>    
                 {% endif %}
             </div>

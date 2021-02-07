@@ -68,7 +68,7 @@ def login():
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome back! {}".format(request.form.get("username")))
-                return redirect(url_for('user_profile'))
+                return redirect(url_for('myaccount'))
             else:
                 # invalid password match
                 flash("Incorrect username or password")
@@ -93,13 +93,13 @@ def logout():
 
 
 @app.route('/myaccount')
-def user_profile():
+def myaccount():
     """
     Redirects user to their profile
     page where all reviews from this user can be seen
     """
     feedbacks = mongo.db.reviews.find({"user": session["user"]})
-    return render_template('/pages/user-profile.html', feedbacks=feedbacks)
+    return render_template('/pages/myaccount.html', feedbacks=feedbacks)
 
 
 @app.route('/therapists')
@@ -125,10 +125,10 @@ def therapist_profile(therapist_id, feedback_id):
 
 
 @app.route('/write-review', methods=["GET", "POST"])
-def leave_feedback():
+def write_review():
     """
     Allows a user to leave a review for a therapist
-    Redirects to leave-feedback page
+    Redirects to review page
     """
     if request.method == "POST":
         review = {
@@ -139,11 +139,11 @@ def leave_feedback():
             'therapist_id': request.form.get('select-therapist')
         }
         mongo.db.reviews.insert_one(review)
-        flash("Feedback saved successfully")
-        return redirect(url_for('leave_feedback'))
+        flash("Review saved successfully")
+        return redirect(url_for('write_review'))
 
     therapists = mongo.db.therapists.find()
-    return render_template('pages/leave-feedback.html', therapists=therapists)
+    return render_template('pages/review.html', therapists=therapists)
 
 
 @app.route('/update-review/<feedback_id>', methods=["GET", "POST"])
@@ -160,13 +160,13 @@ def update_review(feedback_id):
             'therapist_id': request.form.get('select-therapist')
         }
         mongo.db.reviews.update({"_id": ObjectId(feedback_id)}, new_review)
-        flash("Feedback successfully updated")
-        return redirect(url_for('user_profile'))
+        flash("Review successfully updated")
+        return redirect(url_for('myaccount'))
 
     therapists = mongo.db.therapists.find()
     feedback = mongo.db.reviews.find_one({"_id": ObjectId(feedback_id)})
     return render_template(
-        '/pages/leave-feedback.html',
+        '/pages/review.html',
         feedback=feedback,
         therapists=therapists,
         update=True
@@ -181,7 +181,7 @@ def delete_review(feedback_id):
     """
     mongo.db.reviews.remove({"_id": ObjectId(feedback_id)})
     flash("Review successfully deleted")
-    return redirect(url_for('user_profile'))
+    return redirect(url_for('myaccount'))
 
 
 if __name__ == '__main__':
