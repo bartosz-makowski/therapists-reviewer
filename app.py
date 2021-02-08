@@ -1,7 +1,7 @@
 import os
 from flask import (Flask, flash,
-    render_template, redirect,
-    request, session, url_for)
+                   render_template, redirect,
+                   request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -191,7 +191,17 @@ def page_not_found(error):
     """
     error_message = str(error)
     return render_template('pages/error.html',
-                        error_message=error_message), 404
+                           error_message=error_message), 404
+
+
+@app.errorhandler(405)
+def method_not_allowed(error):
+    """
+    Renders error.html with 405 message
+    """
+    error_message = str(error)
+    return render_template('pages/error.html',
+                           error_message=error_message), 405
 
 
 @app.errorhandler(500)
@@ -201,7 +211,7 @@ def server_error(error):
     """
     error_message = str(error)
     return render_template('pages/error.html',
-                        error_message=error_message), 500
+                           error_message=error_message), 500
 
 
 if __name__ == '__main__':
