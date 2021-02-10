@@ -20,9 +20,11 @@
             <div class="col-6 col-md-3 text-center text-md-start">
                 <a href="{{url_for('therapist_profile', therapist_id=therapist._id, feedback_id=therapist.therapist_id)}}" class="btn btn-primary">More info</a>
             </div>
-            <div class="col-6 col-md-3 text-center text-md-start">
-                <a href="{{ url_for('write_review') }}" class="btn btn-primary">Add a review</a>
-            </div>
+            {% if session.user %}
+                <div class="col-6 col-md-3 text-center text-md-start">
+                    <a href="{{ url_for('write_review') }}" class="btn btn-primary">Add a review</a>
+                </div>
+            {% endif %}
         </div>
         {% endfor %}
 {% endblock %}

@@ -25,9 +25,11 @@
         <div class="col-6 text-center">
             <a class="btn btn-primary" href="{{ url_for('get_therapists') }}">Go back</a>
         </div>
-        <div class="col-6 text-center text-md-start">
-            <a href="{{ url_for('write_review') }}" class="btn btn-primary">Add a review</a>
-        </div>
+        {% if session.user %}
+            <div class="col-6 text-center text-md-start">
+                <a href="{{ url_for('write_review') }}" class="btn btn-primary">Add a review</a>
+            </div>
+        {% endif %}
     </div>
     {% for f in feedback %}
         <div class="row">
