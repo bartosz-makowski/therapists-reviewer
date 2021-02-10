@@ -4,8 +4,8 @@
     {% include 'components/flash_messages/flash-messages.html' %}
     <h2 class="page-header">Available Therapists</h2>
         {% for therapist in therapists %}
-        <div class="row">
-            <div class="col-12 therapist-card ">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 therapist-card ">
                 <p>Name: <strong>{{ therapist.first_name.capitalize() }}</strong> <br>
                     Second Name: <strong>{{ therapist.last_name.capitalize() }}</strong> <br>
                     Email: <strong>{{ therapist.email }}</strong> <br>
@@ -16,7 +16,7 @@
                 </p>
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-6 col-md-3 text-center text-md-start">
                 <a href="{{url_for('therapist_profile', therapist_id=therapist._id, feedback_id=therapist.therapist_id)}}" class="btn btn-primary">More info</a>
             </div>

@@ -60,6 +60,18 @@ body {
     padding: 2rem 2rem;
 }
 
+@media (min-width: 990px) {
+    .therapist-card {
+        padding-left: 10rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .therapist-card {
+        padding-left: 19rem;
+    }
+}
+
 
 /* Therapist-profile */
 
