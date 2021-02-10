@@ -22,8 +22,11 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-8 text-align-center">
+        <div class="col-6 text-center">
             <a class="btn btn-primary" href="{{ url_for('get_therapists') }}">Go back</a>
+        </div>
+        <div class="col-6 text-center text-md-start">
+            <a href="{{ url_for('write_review') }}" class="btn btn-primary">Add a review</a>
         </div>
     </div>
     {% for f in feedback %}
