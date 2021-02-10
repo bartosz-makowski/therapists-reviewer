@@ -52,7 +52,8 @@ body {
 
 .therapist-card {
     font-size: 2rem;
-    border-top: 2px solid #949393;
+    border-radius: 1rem;
+    border-color: #fafafa;
     margin-top: 3.5rem;
     padding-top: 2rem
 }
@@ -62,10 +63,18 @@ body {
 
 .form-control {
     font-size: calc(1rem + .9vw);
+    box-shadow: 0.6rem 0.6rem 0.8rem #00000040 inset,
+                -0.4rem -0.4rem 0.6rem #fafafa4d inset;
+    border-radius: 1rem;
+    border-color: #fafafa;
 }
 
 .form-select {
     font-size: calc(1rem + .7vw);
+    box-shadow: 0.6rem 0.6rem 0.8rem #00000040 inset,
+                -0.4rem -0.4rem 0.6rem #fafafa4d inset;
+    border-radius: 1rem;
+    border-color: #fafafa;
 }
 
 .form-container {
