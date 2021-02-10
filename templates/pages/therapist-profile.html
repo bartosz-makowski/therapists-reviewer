@@ -14,6 +14,9 @@
                 Main Therapy: <strong>{{ therapist.main_therapy.capitalize() }}</strong> <br>
                 Other Therapies: <strong>{{ therapist.other_therapies.capitalize() }}</strong> <br>
                 Location: <strong>{{ therapist.location.title() }}</strong> <br>
+                <div class="therapist-bio">
+                    More info: {{ therapist.bio }}
+                </div>
             </p>
         </div>
     </div>
