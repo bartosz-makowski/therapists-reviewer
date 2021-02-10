@@ -99,7 +99,7 @@ webpage         | String
 main_therapy    | String
 other_therapies | String
 location        | String
-therapist_bio   | String
+bio             | String
 
 #### **Reviews:**
 
