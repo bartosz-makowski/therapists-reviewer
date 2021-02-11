@@ -34,11 +34,11 @@ The goal of this project is to provide the users with a website where they can s
 * Interact with the website on Desktop tablet and mobile
 
 ## User stories 	:dart:
-* As a user I expect to **see reviews of different therapists**
-* As a user I want to be able to **search practitioners by location or therapies**
-* As a user I want to be able to **setup an account to be able to leave reviews**
-* As a user I want to be able to **see profiles of the therapists**
-* As a user I expect to **be able to create, read, update and delete my reviews**
+* **1** As a user I expect to **see reviews of different therapists**
+* **2** As a user I want to be able to **search practitioners by location or therapies**
+* **3** As a user I want to be able to **setup an account to be able to leave reviews**
+* **4** As a user I want to be able to **see profiles of the therapists**
+* **5** As a user I expect to **be able to create, read, update and delete my reviews**
 
 ## Site Owner Goals	:dart:
 
@@ -192,30 +192,23 @@ I tried to delete one of the reviews, this test uncovered a need for a confirmat
 
 All crude operations are working correctly, however a few modifcations are needed
 
-#### User story :  As a user I expect to **be able to create, read, update and delete my reviews**
+#### User story :  As a user I expect to **be able to see profiles of the therapists and their reviews**
 
 ##### Plan:
 
-I want the users to be able to leave reviews for therapists available on the website. For great user experience all crud operations are neccessary.
+I want the users to be able to see reviews of therapists available on the website to promote them.
 
 ##### Implementation:
 
-After a user logged in to his profile they gain access to write a review page. I created a form where the user can choose a therapist as well as add their email address for contact, however this is not required. There is an input area to add a review title and the review description.
-
-After accessing my account page, user is able to see all their reviews and decide if wants to remove or update them. I have used same review form as for writing a review, however by using a variable (update)  I was able to select to populate input areas with information from the review. After finishing user has option to update the review or cancel changes. If dcides to press cancel button they will e redirected to my account page
-
-When user is on my account page they will have a **red** cancel button that allows them to remove the review from the database. After pressing it the review will be removed from the MongoDb collection of reviews.
+I want to create an app allowing users to see reviews of the local therapists in the area of Hertfordshire UK. In order to do that all userws of the website should be able to see therapists profiles and their reviews. This part of the application is accessible for all visitors of the website.
 
 ##### Test:
 
-I have tried to write a new review, this uncovered a bug allowing to use spacebar to leave an empty review. More information about this can be seen in bugs section.
-I was able to see all my reviews when accessed my ccount page.
-I have tried to update one of the reviews, no problems were detected.
-I tried to delete one of the reviews, this test uncovered a need for a confirmation alert to avoid accidental removal of the review from database.
+I tried to access this application from different devices and was always able to see expected information about the therapists.
 
 ##### Result:
 
-All crude operations are working correctly, however a few modifcations are needed
+Application works as planned
 
 
 #### Tests
