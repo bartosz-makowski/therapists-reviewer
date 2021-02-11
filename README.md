@@ -44,7 +44,6 @@ The goal of this project is to provide the users with a website where they can s
 
 * Collect data about local therapists
 * Promote therapists in the local area
-* Promote a range of exercise, massage tools and make a profit using affiliate links to those products at [Amazon](https://www.amazon.co.uk/)
 
 ## User Requirements and Expectations 	:dart:
 
@@ -147,8 +146,28 @@ therapist_id       | String
 
 ### Testing :magnet:
 
-#### Plan
+#### User story : As a user I want to be able to **setup an account to be able to leave reviews**
+##### Plan:
 
+I want to create a page where a user can register for their personal account that is accessibale only by this user. After a succesful registration a message confirmation would appear and user would be redirected to their blank myaccount page.
+
+##### Implementation:
+
+I created a form where the user can choose a username and a password. I have used the pattern attribute to only allow certain characters and length for the username and password. Correct feedback will be displayed whenever the user doesn't meet the pattern critera. Before creating the new account, I will check in the database if the username already exists. If so, correct feedback will be displayed to the user. Password will be stored with the help of the password generate hash so it is stored safely. After the registration was succesfull, the user will be redirected to the blank myaccount page. In case the user wrongfully clicked on register instead of sign-in, a link to the sign-in page is provided so the user doesn't have to go back. I have also implemented a 'Go back to the homepage' link in the navbar so the user doesn't have to use the back button of the browser in case they decide to go back to the homepage.
+
+I have used a variable (register) to make the difference between the register and sign-in form. When register is equal to True, I added labels explains the requested username and password characters and their length. By implementing this, I have managed to merge theauthentication form into 1 form which simplifies my templates.
+
+##### Test:
+
+I have tried to create an account with an already existing username. Correct feedback is displayed. Whenever I didn't meet the pattern criteria, the correct feedback was displayed, explaining which charachters etc are allowed. User acccount is created whenever all criteria was met and user is being redirect to blank dashboard.
+
+##### Result:
+
+Registration form is working as planned and user information is stored safely in the mongodb Users collection. Feedback provided stands out nicely to inform the user. Redirection to blank dashboard works as planned.
+
+##### Verdict:
+
+The test has passed all the criteria and works as planned.
 
 #### Tests
 ##### Using W3C Markup Validator
