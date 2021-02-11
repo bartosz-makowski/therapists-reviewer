@@ -147,6 +147,7 @@ therapist_id       | String
 ### Testing :magnet:
 
 #### User story : As a user I want to be able to **setup an account to be able to leave reviews**
+
 ##### Plan:
 
 I want to create a page where a user can register for their personal account that is accessibale only by this user. After a succesful registration a message confirmation would appear and user would be redirected to their blank myaccount page.
@@ -165,9 +166,57 @@ I have tried to create an account with an already existing username. Correct fee
 
 Registration form is working as planned and user information is stored safely in the mongodb Users collection. Feedback provided stands out nicely to inform the user. Redirection to blank dashboard works as planned.
 
-##### Verdict:
 
-The test has passed all the criteria and works as planned.
+#### User story :  As a user I expect to **be able to create, read, update and delete my reviews**
+
+##### Plan:
+
+I want the users to be able to leave reviews for therapists available on the website. For great user experience all crud operations are neccessary.
+
+##### Implementation:
+
+After a user logged in to his profile they gain access to write a review page. I created a form where the user can choose a therapist as well as add their email address for contact, however this is not required. There is an input area to add a review title and the review description.
+
+After accessing my account page, user is able to see all their reviews and decide if wants to remove or update them. I have used same review form as for writing a review, however by using a variable (update)  I was able to select to populate input areas with information from the review. After finishing user has option to update the review or cancel changes. If dcides to press cancel button they will e redirected to my account page
+
+When user is on my account page they will have a **red** cancel button that allows them to remove the review from the database. After pressing it the review will be removed from the MongoDb collection of reviews.
+
+##### Test:
+
+I have tried to write a new review, this uncovered a bug allowing to use spacebar to leave an empty review. More information about this can be seen in bugs section.
+I was able to see all my reviews when accessed my ccount page.
+I have tried to update one of the reviews, no problems were detected.
+I tried to delete one of the reviews, this test uncovered a need for a confirmation alert to avoid accidental removal of the review from database.
+
+##### Result:
+
+All crude operations are working correctly, however a few modifcations are needed
+
+#### User story :  As a user I expect to **be able to create, read, update and delete my reviews**
+
+##### Plan:
+
+I want the users to be able to leave reviews for therapists available on the website. For great user experience all crud operations are neccessary.
+
+##### Implementation:
+
+After a user logged in to his profile they gain access to write a review page. I created a form where the user can choose a therapist as well as add their email address for contact, however this is not required. There is an input area to add a review title and the review description.
+
+After accessing my account page, user is able to see all their reviews and decide if wants to remove or update them. I have used same review form as for writing a review, however by using a variable (update)  I was able to select to populate input areas with information from the review. After finishing user has option to update the review or cancel changes. If dcides to press cancel button they will e redirected to my account page
+
+When user is on my account page they will have a **red** cancel button that allows them to remove the review from the database. After pressing it the review will be removed from the MongoDb collection of reviews.
+
+##### Test:
+
+I have tried to write a new review, this uncovered a bug allowing to use spacebar to leave an empty review. More information about this can be seen in bugs section.
+I was able to see all my reviews when accessed my ccount page.
+I have tried to update one of the reviews, no problems were detected.
+I tried to delete one of the reviews, this test uncovered a need for a confirmation alert to avoid accidental removal of the review from database.
+
+##### Result:
+
+All crude operations are working correctly, however a few modifcations are needed
+
 
 #### Tests
 ##### Using W3C Markup Validator
@@ -234,3 +283,4 @@ The test has passed all the criteria and works as planned.
 #### Running Therapist Reviewer Locally
 
 ### Acknowledgements :clap:
+* [Unsplash](https://unsplash.com/) community for access to free high quality images.
