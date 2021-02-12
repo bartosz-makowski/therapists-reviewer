@@ -9,6 +9,15 @@
     <div class="row">
         <div class="col-12 justify-content-center">
             <img src="/static/images/hero-image.png" id="hero-image" alt="hero image">
+            <form action="{{ url_for('search') }}" method="Post" class="col-8">
+                <div class="col-12">
+                    <label for="query">Search therapists by location or therapy</label>
+                    <input type="text" class="form-control" id="query" name="query" aria-describedby="search query">
+                </div>
+                <div class="col-8 text-align-center">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock %}
