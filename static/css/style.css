@@ -22,7 +22,7 @@ body {
     text-align: center;
 }
 
-#background {
+#hero-img {
     background-image: url(../images/hero-image.png);
     height: 60vh;
     width: 100vw;
@@ -30,7 +30,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    filter: brightness(85%);
 }
 
 #search-form {
@@ -64,13 +63,6 @@ body {
     font-size: calc(1.8rem + .9vw);
 }
 
-
-/* Hero image */
-
-
-#hero-image {
-    width: 100%;
-}
 
 
 /* Therapists */
