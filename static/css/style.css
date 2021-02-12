@@ -22,6 +22,32 @@ body {
     text-align: center;
 }
 
+#background {
+    background-image: url(../images/hero-image.png);
+    height: 60vh;
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    filter: brightness(85%);
+}
+
+#search-form {
+    color: #fafafa;
+    position: relative;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    background-color: #0000006e;
+    box-shadow: 0.6rem 0.6rem 0.8rem #00000040 inset,
+                -0.4rem -0.4rem 0.6rem #00000040 inset;
+    border-radius: 1rem;
+    border-color: #fafafa;
+    padding: 2rem;
+}
+
+
 /* Pages Header */
 
 .page-header {
@@ -217,7 +243,7 @@ body {
 /* Footer */
 
 .footer-container {
-    margin-top: 9rem;
+    margin-top: 2rem;
     margin-bottom: 2rem;
     padding-top: 4rem;
 }
