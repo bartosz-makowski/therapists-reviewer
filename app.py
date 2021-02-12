@@ -25,6 +25,16 @@ def home():
     """
     return render_template('pages/home.html')
 
+@app.route('/results', methods=["GET", "POST"])
+def search():
+    """
+    Allows user to search for therapists using location, main_theapy or other_therapies
+    """
+    query = request.form.get("query").lower()
+    therapists = mongo.db.therapists.find({"$text": {"$search": query}})
+    count_therapists = therapists.count()
+    return render_template('pages/search.html', therapists=therapists,
+                            count_therapists=count_therapists)
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
