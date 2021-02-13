@@ -149,6 +149,7 @@ body {
 .btn {
     font-size: 2rem;
     margin-top: 2rem;
+    padding: 0.5rem;
     color: #fafafa;
     background-color: #1e96fc;
     border-radius: 1rem;

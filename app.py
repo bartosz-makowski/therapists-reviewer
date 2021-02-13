@@ -41,7 +41,7 @@ def register():
     """
     Allows the user to register at the website
     Checks if user already exists in the DB
-    redirects user to homepage
+    Redirects user to homepage
     """
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
@@ -65,9 +65,9 @@ def register():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     """
-    checks if username exists
-    checks if password is correct
-    redirects to user-authentication.html
+    Checks if username exists
+    Checks if password is correct
+    Redirects to user-authentication.html
     """
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
@@ -106,7 +106,7 @@ def logout():
 def myaccount():
     """
     Redirects user to their profile
-    page where all reviews from this user can be seen
+    Page where all reviews from this user can be seen
     """
     feedbacks = mongo.db.reviews.find({"user": session["user"]})
     return render_template('/pages/myaccount.html', feedbacks=feedbacks)
@@ -227,4 +227,4 @@ def server_error(error):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=os.environ.get('debug'))
+            debug=os.environ.get('DEBUG'))
