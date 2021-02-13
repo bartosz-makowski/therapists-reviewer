@@ -28,13 +28,15 @@ def home():
 @app.route('/results', methods=["GET", "POST"])
 def search():
     """
-    Allows user to search for therapists using location, main_theapy or other_therapies
+    Allows user to search for therapists using
+    location, main_therapy or other therapies
     """
     query = request.form.get("query").lower()
     therapists = mongo.db.therapists.find({"$text": {"$search": query}})
     count_therapists = therapists.count()
     return render_template('pages/search.html', therapists=therapists,
-                            count_therapists=count_therapists)
+                           count_therapists=count_therapists)
+
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
@@ -44,21 +46,31 @@ def register():
     Redirects user to homepage
     """
     if request.method == "POST":
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
-
-        if existing_user:
-            flash("Username is already in our database")
+        username = request.form.get("username", None).lower()
+        if username is None:
+            flash("Username cannot be empty")
             return redirect(url_for('register'))
-        username = request.form.get("username").lower()
-        password = generate_password_hash(request.form.get("password"))
-        mongo.db.users.insert_one({
-            'username': username,
-            'password': password
-        })
-        session["user"] = request.form.get("username").lower()
-        flash("Registration successful, you are now logged in")
-        return redirect(url_for('myaccount'))
+        else:
+            existing_user = mongo.db.users.find_one(
+                {"username": username})
+
+            if existing_user:
+                flash("Username is already in our database")
+                return redirect(url_for('register'))
+
+            password = generate_password_hash(request.form.get(
+                "password", None))
+            if password is None:
+                flash("Password cannot be empty")
+                return redirect(url_for('register'))
+            else:
+                mongo.db.users.insert_one({
+                    'username': username,
+                    'password': password
+                })
+                session["user"] = request.form.get("username").lower()
+                flash("Registration successful, you are now logged in")
+                return redirect(url_for('myaccount'))
     return render_template('pages/user-authentication.html', register=True)
 
 
