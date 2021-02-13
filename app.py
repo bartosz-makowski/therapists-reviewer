@@ -70,23 +70,30 @@ def login():
     Redirects to user-authentication.html
     """
     if request.method == "POST":
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
-        if existing_user:
-            # check if username in db
-            if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                session["user"] = request.form.get("username").lower()
-                flash("Welcome back! {}".format(request.form.get("username")))
-                return redirect(url_for('myaccount'))
+        username = request.form.get("username", None).lower()
+        if username is None:
+            flash("Username cannot be empty")
+            return redirect(url_for('login'))
+        else:
+            existing_user = mongo.db.users.find_one(
+                {"username": username})
+            if existing_user:
+                # check if username in db
+                if check_password_hash(
+                        existing_user["password"],
+                        request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome back! {}".format(
+                        request.form.get("username")))
+                    return redirect(url_for('myaccount'))
+                else:
+                    # invalid password match
+                    flash("Incorrect username or password")
+                    return redirect(url_for('login'))
             else:
-                # invalid password match
+                # username doesn't exist
                 flash("Incorrect username or password")
                 return redirect(url_for('login'))
-        else:
-            # username doesn't exist
-            flash("Incorrect username or password")
-            return redirect(url_for('login'))
 
     return render_template('pages/user-authentication.html')
 
