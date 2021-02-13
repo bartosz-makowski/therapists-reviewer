@@ -31,11 +31,15 @@ def search():
     Allows user to search for therapists using
     location, main_therapy or other therapies
     """
-    query = request.form.get("query").lower()
-    therapists = mongo.db.therapists.find({"$text": {"$search": query}})
-    count_therapists = therapists.count()
-    return render_template('pages/search.html', therapists=therapists,
-                           count_therapists=count_therapists)
+    try:
+        query = request.form.get("query").lower()
+        therapists = mongo.db.therapists.find({"$text": {"$search": query}})
+        count_therapists = therapists.count()
+        return render_template('pages/search.html', therapists=therapists,
+                            count_therapists=count_therapists)
+    except:
+        flash("Upps something went wrong, please try again later")
+        return redirect(url_for('home'))
 
 
 @app.route('/register', methods=["GET", "POST"])
@@ -46,31 +50,35 @@ def register():
     Redirects user to homepage
     """
     if request.method == "POST":
-        username = request.form.get("username", None).lower()
-        if username is None:
-            flash("Username cannot be empty")
-            return redirect(url_for('register'))
-        else:
-            existing_user = mongo.db.users.find_one(
-                {"username": username})
-
-            if existing_user:
-                flash("Username is already in our database")
-                return redirect(url_for('register'))
-
-            password = generate_password_hash(request.form.get(
-                "password", None))
-            if password is None:
-                flash("Password cannot be empty")
+        try:
+            username = request.form.get("username", None).lower()
+            if username is None:
+                flash("Username cannot be empty")
                 return redirect(url_for('register'))
             else:
-                mongo.db.users.insert_one({
-                    'username': username,
-                    'password': password
-                })
-                session["user"] = request.form.get("username").lower()
-                flash("Registration successful, you are now logged in")
-                return redirect(url_for('myaccount'))
+                existing_user = mongo.db.users.find_one(
+                    {"username": username})
+
+                if existing_user:
+                    flash("Username is already in our database")
+                    return redirect(url_for('register'))
+
+                password = generate_password_hash(request.form.get(
+                    "password", None))
+                if password is None:
+                    flash("Password cannot be empty")
+                    return redirect(url_for('register'))
+                else:
+                    mongo.db.users.insert_one({
+                        'username': username,
+                        'password': password
+                    })
+                    session["user"] = request.form.get("username").lower()
+                    flash("Registration successful, you are now logged in")
+                    return redirect(url_for('myaccount'))
+        except:
+            flash("Upps something went wrong, please try again later")
+            return redirect(url_for('register'))
     return render_template('pages/user-authentication.html', register=True)
 
 
@@ -82,30 +90,34 @@ def login():
     Redirects to user-authentication.html
     """
     if request.method == "POST":
-        username = request.form.get("username", None).lower()
-        if username is None:
-            flash("Username cannot be empty")
-            return redirect(url_for('login'))
-        else:
-            existing_user = mongo.db.users.find_one(
-                {"username": username})
-            if existing_user:
-                # check if username in db
-                if check_password_hash(
-                        existing_user["password"],
-                        request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome back! {}".format(
-                        request.form.get("username")))
-                    return redirect(url_for('myaccount'))
+        try:
+            username = request.form.get("username", None).lower()
+            if username is None:
+                flash("Username cannot be empty")
+                return redirect(url_for('login'))
+            else:
+                existing_user = mongo.db.users.find_one(
+                    {"username": username})
+                if existing_user:
+                    # check if username in db
+                    if check_password_hash(
+                            existing_user["password"],
+                            request.form.get("password")):
+                        session["user"] = request.form.get("username").lower()
+                        flash("Welcome back! {}".format(
+                            request.form.get("username")))
+                        return redirect(url_for('myaccount'))
+                    else:
+                        # invalid password match
+                        flash("Incorrect username or password")
+                        return redirect(url_for('login'))
                 else:
-                    # invalid password match
+                    # username doesn't exist
                     flash("Incorrect username or password")
                     return redirect(url_for('login'))
-            else:
-                # username doesn't exist
-                flash("Incorrect username or password")
-                return redirect(url_for('login'))
+        except:
+            flash("Upps something went wrong, please try again later")
+            return redirect(url_for('login'))
 
     return render_template('pages/user-authentication.html')
 
@@ -127,8 +139,12 @@ def myaccount():
     Redirects user to their profile
     Page where all reviews from this user can be seen
     """
-    feedbacks = mongo.db.reviews.find({"user": session["user"]})
-    return render_template('/pages/myaccount.html', feedbacks=feedbacks)
+    try:
+        feedbacks = mongo.db.reviews.find({"user": session["user"]})
+        return render_template('/pages/myaccount.html', feedbacks=feedbacks)
+    except:
+        flash("Upps something went wrong, please try again later")
+        return redirect(url_for('login'))
 
 
 @app.route('/therapists')
@@ -136,8 +152,12 @@ def get_therapists():
     """
     Loads a list of therapists with their details from the db
     """
-    therapists = mongo.db.therapists.find()
-    return render_template('pages/therapists.html', therapists=therapists)
+    try:
+        therapists = mongo.db.therapists.find()
+        return render_template('pages/therapists.html', therapists=therapists)
+    except:
+        flash("Upps something went wrong, please try again later")
+        return redirect(url_for('get_therapists'))
 
 
 @app.route('/therapist/profile/<therapist_id>/<feedback_id>')
@@ -145,12 +165,16 @@ def therapist_profile(therapist_id, feedback_id):
     """
     Shows a therapist's porfile page with their reviews
     """
-    therapist = mongo.db.therapists.find_one({"_id": ObjectId(therapist_id)})
-    feedback = mongo.db.reviews.find({"therapist_id": feedback_id})
-    return render_template('pages/therapist-profile.html',
-                           therapist=therapist,
-                           feedback=feedback
-                           )
+    try:
+        therapist = mongo.db.therapists.find_one({"_id": ObjectId(therapist_id)})
+        feedback = mongo.db.reviews.find({"therapist_id": feedback_id})
+        return render_template('pages/therapist-profile.html',
+                            therapist=therapist,
+                            feedback=feedback
+                            )
+    except:
+        flash("Upps something went wrong, please try again later")
+        return redirect(url_for('get_therapists'))
 
 
 @app.route('/write-review', methods=["GET", "POST"])
@@ -160,16 +184,21 @@ def write_review():
     Redirects to review page
     """
     if request.method == "POST":
-        review = {
-            "user": session["user"],
-            'title': request.form.get('title'),
-            'email': request.form.get('email'),
-            'review_description': request.form.get('review_description'),
-            'therapist_id': request.form.get('select-therapist')
-        }
-        mongo.db.reviews.insert_one(review)
-        flash("Review saved successfully")
-        return redirect(url_for('write_review'))
+        try:
+            review = {
+                "user": session["user"],
+                'title': request.form.get('title'),
+                'email': request.form.get('email'),
+                'review_description': request.form.get('review_description'),
+                'therapist_id': request.form.get('select-therapist')
+            }
+            mongo.db.reviews.insert_one(review)
+            flash("Review saved successfully")
+            return redirect(url_for('write_review'))
+
+        except:
+            flash("Upps something went wrong, please try again later")
+            return redirect(url_for('home'))
 
     therapists = mongo.db.therapists.find()
     return render_template('pages/review.html', therapists=therapists)
@@ -181,16 +210,20 @@ def update_review(feedback_id):
     Allows user to update changes to their review
     """
     if request.method == "POST":
-        new_review = {
-            "user": session["user"],
-            'title': request.form.get('title'),
-            'email': request.form.get('email'),
-            'review_description': request.form.get('review_description'),
-            'therapist_id': request.form.get('select-therapist')
-        }
-        mongo.db.reviews.update({"_id": ObjectId(feedback_id)}, new_review)
-        flash("Review successfully updated")
-        return redirect(url_for('myaccount'))
+        try:
+            new_review = {
+                "user": session["user"],
+                'title': request.form.get('title'),
+                'email': request.form.get('email'),
+                'review_description': request.form.get('review_description'),
+                'therapist_id': request.form.get('select-therapist')
+            }
+            mongo.db.reviews.update({"_id": ObjectId(feedback_id)}, new_review)
+            flash("Review successfully updated")
+            return redirect(url_for('myaccount'))
+        except:
+            flash("Upps something went wrong, please try again later")
+            return redirect(url_for('myaccount'))
 
     therapists = mongo.db.therapists.find()
     feedback = mongo.db.reviews.find_one({"_id": ObjectId(feedback_id)})
@@ -208,9 +241,13 @@ def delete_review(feedback_id):
     Allows a user to remove their review
     Redirects user to their profile page where all their reviews can be seen
     """
-    mongo.db.reviews.remove({"_id": ObjectId(feedback_id)})
-    flash("Review successfully deleted")
-    return redirect(url_for('myaccount'))
+    try:
+        mongo.db.reviews.remove({"_id": ObjectId(feedback_id)})
+        flash("Review successfully deleted")
+        return redirect(url_for('myaccount'))
+    except:
+        flash("Upps something went wrong, please try again later")
+        return redirect(url_for('myaccount'))
 
 
 @app.errorhandler(404)
