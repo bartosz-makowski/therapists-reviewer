@@ -78,7 +78,6 @@ Using learned knowledge from prior research, bright and vibrant colours have a h
 
 ## Wireframes :straight_ruler:
 I built the wireframes for this project using <a href="https://balsamiq.com/">Balsamiq</a>. Started by doing a very basic wireframe for Mobile/Tablet/Desktop - these were to get a basic understanding of how structurally elements would appear on the page. You can view those in a wireframes [folder](https://github.com/bartosz-makowski/therapists-reviewer/tree/master/wireframes).
-![color theme]()
 
 ## **Database Structure**
 
