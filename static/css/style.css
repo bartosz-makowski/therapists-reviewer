@@ -65,6 +65,7 @@ body {
 
 .nav-link {
     color: #000;
+    padding: .5rem;
 }
 
 .nav1:hover {
@@ -268,24 +269,71 @@ body {
 }
 
 /* Taken from whiskey landing page module at CI*/
-.soc-icon {
+.soc-icon1 {
     width: 4.5rem;
     height: 4.5rem;
     border-radius: 1rem;
     color: #1E96FC;
     padding-top: 3px;
 }
+
+.soc-icon2 {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1rem;
+    color: #072ac8;
+    padding-top: 3px;
+}
+
+.soc-icon3 {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1rem;
+    color: #c80707;
+    padding-top: 3px;
+}
+
+.soc-icon4 {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1rem;
+    color: #f0c41b;
+    padding-top: 3px;
+}
 /*-------------------------------*/
 
-.soc-icon:focus {
+.soc-icon1:focus {
     background: linear-gradient(35deg, #1e96fc, #fdfdfd40);
     box-shadow: 0.6rem 0.6rem 0.8rem #00000040 inset,
                 -0.4rem -0.4rem 0.6rem #fafafa4d inset;
     outline: none;
 }
 
-.soc-icon:hover {
+.soc-icon2:focus {
+    background: linear-gradient(35deg, #072ac8, #fdfdfd40);
+    box-shadow: 0.6rem 0.6rem 0.8rem #00000040 inset,
+                -0.4rem -0.4rem 0.6rem #fafafa4d inset;
+    outline: none;
+}
+
+.soc-icon3:focus {
+    background: linear-gradient(35deg, #c80707, #fdfdfd40);
+    box-shadow: 0.6rem 0.6rem 0.8rem #00000040 inset,
+                -0.4rem -0.4rem 0.6rem #fafafa4d inset;
+    outline: none;
+}
+
+.soc-icon4:focus {
+    background: linear-gradient(35deg, #f0c41b, #fdfdfd40);
+    box-shadow: 0.6rem 0.6rem 0.8rem #00000040 inset,
+                -0.4rem -0.4rem 0.6rem #fafafa4d inset;
+    outline: none;
+}
+
+.icon-hover:hover {
     background: linear-gradient(35deg, #f3f1f1, #fdfdfd40);
     box-shadow: 0.6rem 0.6rem 0.8rem #00000040 inset,
                 -0.4rem -0.4rem 0.6rem #fafafa4d inset;
 }
+
+
