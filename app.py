@@ -131,6 +131,7 @@ def logout():
     """
     flash("You have logged out")
     session.clear()
+    flash("Log out successful")
     return redirect(url_for('login'))
 
 

@@ -10,6 +10,13 @@ body {
     font-size: 2.3rem;
 }
 
+
+/* Flash messages */
+
+#flash-message {
+    font-weight: 400;
+}
+
 /* Home Page */
 
 #home-h1 {
