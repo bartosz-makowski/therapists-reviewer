@@ -3,7 +3,11 @@
     {% include 'components/navigation/navbar.html' %}
     {% include 'components/flash_messages/flash-messages.html' %}
         <h2 class="page-header">All Your feedback in one place</h2>
+
+    <!--Review cards-->
+
         {% for feedback in feedbacks %}
+
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 therapist-card">
                     Title: <strong>{{ feedback.title }}</strong> <br>  
@@ -11,6 +15,9 @@
                     Therapist: <strong>{{ feedback.therapist_id.title() }}</strong> <br>
                 </div>
             </div>
+
+    <!--Buttons-->
+    
             <div class="row justify-content-center">
                 <div class="col-6 col-md-3 text-center text-md-center">
                     <a href="{{url_for('update_review', feedback_id=feedback._id)}}" class="btn btn-primary">Edit this review</a>
@@ -19,6 +26,6 @@
                     <a href="{{url_for('delete_review', feedback_id=feedback._id)}}" class="btn btn-primary btn-cancel">Delete this review</a>
                 </div>
             </div>
-            
+
         {% endfor %}
 {% endblock %}

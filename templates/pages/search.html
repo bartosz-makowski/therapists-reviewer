@@ -5,6 +5,9 @@
     <h2 class="page-header">Your search results</h2>
     {% if count_therapists!=0 %}
         {% for therapist in therapists %}
+
+    <!--Therapist card-->
+
         <div class="row justify-content-center">
             <div class="col-12 col-md-6 therapist-card ">
                 <p>Name: <strong>{{ therapist.first_name.capitalize() }}</strong> <br>
@@ -21,6 +24,9 @@
             <div class="col-6 col-md-3 text-center text-md-end">
                 <a href="{{url_for('therapist_profile', therapist_id=therapist._id, feedback_id=therapist.therapist_id)}}" class="btn btn-primary">More info</a>
             </div>
+
+        <!--Button to write_review-->
+
             {% if session.user %}
                 <div class="col-6 col-md-3 text-center text-md-start">
                     <a href="{{ url_for('write_review') }}" class="btn btn-primary">Add a review</a>
@@ -31,6 +37,9 @@
     {% else %}
         <h2 class="page-header"> Sorry but we couldn't find any therapist</h2>
     {% endif %}
+
+    <!--Button to new search-->
+    
         <div class="row justify-content-center" id="new-search">
             <div class="col-6 col-md-3 text-center text-md-center">
                 <a href="{{url_for('home')}}" class="btn btn-primary">New search</a>

@@ -7,6 +7,9 @@
         <div class="col-12 col-md-6 text-center therapist-img">
             <img class="therapist-img" src="/static/images/therapists/{{therapist.first_name}}_{{therapist.last_name}}.png" alt="therapist's picture">
         </div>
+
+        <!--Therapists card-->
+
         <div class="col-12 col-md-6 therapist-info">
             <p>
                 Email: <strong>{{ therapist.email }}</strong> <br>
@@ -21,6 +24,9 @@
             </p>
         </div>
     </div>
+
+    <!--Buttons-->
+
     <div class="row justify-content-center">
         <div class="col-6 text-center">
             <a class="btn btn-primary" href="{{ url_for('get_therapists') }}">Go back</a>
@@ -31,6 +37,9 @@
             </div>
         {% endif %}
     </div>
+
+    <!--Reviews-->
+
     {% for f in feedback %}
         <div class="row">
             <div class="col-12 therapist-card">

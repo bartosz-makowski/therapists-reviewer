@@ -2,6 +2,7 @@
 {% block content %}
     {% include 'components/navigation/navbar.html' %}
     {% include 'components/flash_messages/flash-messages.html' %}
+    
        <div class="row">
            <div class="col-12">
                <h1 class="page-header">Oh seems like something went wrong</h1>
@@ -11,4 +12,5 @@
                <a href="{{url_for('home')}}" class="btn btn-primary">Go back to home page</a>
            </div>
        </div>
+
 {% endblock %}

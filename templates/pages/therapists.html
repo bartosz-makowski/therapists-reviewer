@@ -3,28 +3,32 @@
     {% include 'components/navigation/navbar.html' %}
     {% include 'components/flash_messages/flash-messages.html' %}
     <h2 class="page-header">Available Therapists</h2>
+
+    <!--Therapist card-->
+
         {% for therapist in therapists %}
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6 therapist-card ">
-                <p>Name: <strong>{{ therapist.first_name.capitalize() }}</strong> <br>
-                    Second Name: <strong>{{ therapist.last_name.capitalize() }}</strong> <br>
-                    Email: <strong>{{ therapist.email }}</strong> <br>
-                    Webpage: <strong><a href="#">{{ therapist.webpage }}</a></strong> <br>
-                    Main Therapy: <strong>{{ therapist.main_therapy.capitalize() }}</strong> <br>
-                    Other Therapies: <strong>{{ therapist.other_therapies.capitalize() }}</strong> <br>
-                    Location: <strong>{{ therapist.location.title() }}</strong> <br>
-                </p>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-6 col-md-3 text-center text-md-end">
-                <a href="{{url_for('therapist_profile', therapist_id=therapist._id, feedback_id=therapist.therapist_id)}}" class="btn btn-primary">More info</a>
-            </div>
-            {% if session.user %}
-                <div class="col-6 col-md-3 text-center text-md-start">
-                    <a href="{{ url_for('write_review') }}" class="btn btn-primary">Add a review</a>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 therapist-card ">
+                    <p>Name: <strong>{{ therapist.first_name.capitalize() }}</strong> <br>
+                        Second Name: <strong>{{ therapist.last_name.capitalize() }}</strong> <br>
+                        Email: <strong>{{ therapist.email }}</strong> <br>
+                        Webpage: <strong><a href="#">{{ therapist.webpage }}</a></strong> <br>
+                        Main Therapy: <strong>{{ therapist.main_therapy.capitalize() }}</strong> <br>
+                        Other Therapies: <strong>{{ therapist.other_therapies.capitalize() }}</strong> <br>
+                        Location: <strong>{{ therapist.location.title() }}</strong> <br>
+                    </p>
                 </div>
-            {% endif %}
-        </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6 col-md-3 text-center text-md-end">
+                    <a href="{{url_for('therapist_profile', therapist_id=therapist._id, feedback_id=therapist.therapist_id)}}" class="btn btn-primary">More info</a>
+                </div>
+                {% if session.user %}
+                    <div class="col-6 col-md-3 text-center text-md-start">
+                        <a href="{{ url_for('write_review') }}" class="btn btn-primary">Add a review</a>
+                    </div>
+                {% endif %}
+            </div>
         {% endfor %}
+        
 {% endblock %}

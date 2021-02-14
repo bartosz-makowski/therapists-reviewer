@@ -1,3 +1,4 @@
+<!--Form methods-->
 {% if register == True %}
     <form method="POST" action="{{ url_for('register') }}">
 {% else %}
@@ -7,18 +8,27 @@
             {% if register == True %}
                 <h3 class="text-center">Username and Password should be 5-15 characters letters or numbers and no spaces</h3>
             {% endif %}
+
+            <!--Username input-->
+
             <div class="row justify-content-center">
                 <div class="col-10 col-md-8">
                     <label class="form-label" for="username">Username</label>
                     <input type="text" class="form-control" id="username" name="username" aria-describedby="username"
                     minlength="5" maxlength="15" pattern="^[A-Za-z0-9]{5,15}$" required>
                 </div>
+
+            <!--Password input-->
+            
                 <div class="col-10 col-md-8">
                     <label class="form-label" for="password">Password</label>
                     <input class="form-control" type="password" id="password" name="password"
                     minlength="5" maxlength="15" pattern="^[A-Za-z0-9]{5,15}$" required>
                 </div>
             </div>
+
+            <!--Buttons-->
+
             <div class="row justify-content-center">
                 <div class="col-6 text-center">
                     {% if register==True %}
