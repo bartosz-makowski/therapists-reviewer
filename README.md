@@ -260,9 +260,9 @@ Application works as planned
 * **Issue:** Form allowing registration for username and password using white spaces
 * **Fix:** Adding  attributes `pattern="^[A-Za-z0-9]{5,15}$"` and `required` to username and password input fix this issue
 
-####  :ant:
-* **Issue:** 
-* **Fix:** 
+#### Google dev tools - empty div in the head issue at home page :ant:
+* **Issue:** When checked the home page with google dev tools there was an empty div pushed into the head element.
+* **Fix:** Empty div was `{% include 'components/flash_messages/flash-messages.html' %}`, moving it in to `{% block content %}` fixed this issue 
 
 ### Deployment :surfer:
 
