@@ -6,14 +6,14 @@
         </button>
         <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavAltMarkup">
             <div class="navbar-nav flex-row justify-content-around flex-wrap">
-                <a class="nav-link" href="{{url_for('get_therapists')}}">Therapists</a>
+                <a class="nav-link nav1" href="{{url_for('get_therapists')}}">Therapists</a>
                 {% if not session.user %}
-                    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
-                    <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
+                    <a class="nav-link nav4" href="{{ url_for('register') }}">Register</a>
+                    <a class="nav-link nav3" href="{{ url_for('login') }}">Log in</a>
                 {% else %}
-                    <a class="nav-link" href="{{ url_for('write_review') }}">Write review</a>
-                    <a class="nav-link" href="{{url_for('myaccount')}}">My account</a>
-                    <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
+                    <a class="nav-link nav3" href="{{ url_for('write_review') }}">Write review</a>
+                    <a class="nav-link nav1" href="{{url_for('myaccount')}}">My account</a>
+                    <a class="nav-link nav4" href="{{ url_for('logout') }}">Log out</a>
                 {% endif %}
             </div>
         </div>
