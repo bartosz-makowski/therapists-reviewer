@@ -25,6 +25,7 @@ def home():
     """
     return render_template('pages/home.html')
 
+
 @app.route('/results', methods=["GET", "POST"])
 def search():
     """
@@ -36,7 +37,7 @@ def search():
         therapists = mongo.db.therapists.find({"$text": {"$search": query}})
         count_therapists = therapists.count()
         return render_template('pages/search.html', therapists=therapists,
-                            count_therapists=count_therapists)
+                               count_therapists=count_therapists)
     except:
         flash("Upps something went wrong, please try again later")
         return redirect(url_for('home'))
@@ -166,12 +167,12 @@ def therapist_profile(therapist_id, feedback_id):
     Shows a therapist's porfile page with their reviews
     """
     try:
-        therapist = mongo.db.therapists.find_one({"_id": ObjectId(therapist_id)})
+        therapist = mongo.db.therapists.find_one(
+            {"_id": ObjectId(therapist_id)})
         feedback = mongo.db.reviews.find({"therapist_id": feedback_id})
         return render_template('pages/therapist-profile.html',
-                            therapist=therapist,
-                            feedback=feedback
-                            )
+                               therapist=therapist,
+                               feedback=feedback)
     except:
         flash("Upps something went wrong, please try again later")
         return redirect(url_for('get_therapists'))
