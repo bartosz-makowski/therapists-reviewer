@@ -68,10 +68,12 @@ I chose to use the font **Lato** as it was designed with a neutral, yet friendly
 Using learned knowledge from prior research, bright and vibrant colours have a higher influence in terms of positivity and therefore more potential interactions. [Link to the colour palette](https://coolors.co/072ac8-1e96fc-c80707-f0c14b-fafafa). Screenshot of the colour palette has been added to the wireframes [folder](https://github.com/bartosz-makowski/therapists-reviewer/blob/master/wireframes/therapists-reviewer-palette.png).
 
 **Colours used**
+![color theme](https://github.com/bartosz-makowski/therapists-reviewer/blob/master/wireframes/therapists-reviewer-palette.png)
 
 
 ## Wireframes :straight_ruler:
 I built the wireframes for this project using <a href="https://balsamiq.com/">Balsamiq</a>. Started by doing a very basic wireframe for Mobile/Tablet/Desktop - these were to get a basic understanding of how structurally elements would appear on the page. You can view those in a wireframes [folder](https://github.com/bartosz-makowski/therapists-reviewer/tree/master/wireframes).
+![color theme]()
 
 ## **Database Structure**
 
@@ -183,8 +185,8 @@ When user is on my account page they will have a **red** cancel button that allo
 
 ##### Test:
 
-I have tried to write a new review, this uncovered a bug allowing to use spacebar to leave an empty review. More information about this can be seen in bugs section.
-I was able to see all my reviews when accessed my ccount page.
+I have tried to write a new review, this uncovered a bug allowing to use a spacebar to leave an empty review. This issue couldn't be fixed with the **pattern** attribute. I will need to research this issue and improve it in the next release of this application. 
+I was able to see all my reviews when accessed my account page.
 I have tried to update one of the reviews, no problems were detected.
 I tried to delete one of the reviews, this test uncovered a need for a confirmation alert to avoid accidental removal of the review from database.
 
@@ -222,17 +224,12 @@ Application works as planned
 ###### Test 3 :chart_with_upwards_trend:
 * **Error:** 
 * **Solution** 
-##### Manual testing
-###### Test1 :magnet:
-* **Error:** 
-* **Solution** 
-###### Test 2 :chart_with_downwards_trend:
-* **Error:** 
-* **Solution**  
+
 ### Bugs :mosquito:
-####  :spider:
-* **Issue:** 
-* **Fix:** 
+#### New user registration form issue :spider:
+* **Issue:** Form allowing registration for username and password using white spaces
+* **Fix:** Adding  attributes `pattern="^[A-Za-z0-9]{5,15}$"` and `required` to username and password input fix this issue
+
 ####  :ant:
 * **Issue:** 
 * **Fix:** 
