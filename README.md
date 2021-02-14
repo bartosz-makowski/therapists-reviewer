@@ -38,11 +38,12 @@ The goal of this project is to provide the users with a website where they can s
 * Interact with the website on Desktop tablet and mobile
 
 ## User stories 	:dart:
-* **1** As a user I expect to **see reviews of different therapists**
-* **2** As a user I want to be able to **search practitioners by location or therapies**
-* **3** As a user I want to be able to **setup an account to be able to leave reviews**
-* **4** As a user I want to be able to **see profiles of the therapists**
-* **5** As a user I expect to **be able to create, read, update and delete my reviews**
+1. As a user I expect to **setup an account to be able to leave reviews**
+2. As a user I expect to **be able to log in and out of my account**
+3. As a user I want to be able to **search practitioners by location or therapies**
+4. As a user I want to be able to **see reviews of different therapists**
+5. As a user I want to be able to **see profiles of the therapists**
+6. As a user I expect to **be able to create, read, update and delete my reviews**
 
 ## Site Owner Goals	:dart:
 
@@ -125,10 +126,13 @@ therapist_id       | String
 * Password and username validation
 * CRUD functionality for the reviews
 * Visible feedback when hover over buttons, links and icons
-* Buttons and `<a>` tags styled using [neumorphism](https://css-tricks.com/neumorphism-and-css/) style
+* Buttons `<a>` tags form input areas and cards styled using [neumorphism](https://css-tricks.com/neumorphism-and-css/) style
 
 **Features to be implemented in the future**
-
+* Validation of review form to prevent only white spaces in the review description and review title input
+* Have `forget my password` functionality
+* Login for therapists with an option to modify their details in the database
+* Add pagination so the list of reviews will be displayed with a max of 20 logs per page.
 
 ## Technologies Used :computer:
 
@@ -141,11 +145,14 @@ therapist_id       | String
 ### Tools & Libraries
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 * [MongoDB](https://www.mongodb.com/)
+* [PyMongo](https://docs.mongodb.com/drivers/pymongo/)
+* [Jinja](https://palletsprojects.com/p/jinja/)
 * [PopperJS](https://popper.js.org/)
 * [jQuery](https://jquery.com/)
 * [Git](https://git-scm.com/)
 * [Bootstrap](https://getbootstrap.com/)
 * [Google Fonts](https://fonts.google.com/)
+* [FontAwesome](https://fontawesome.com/)
 * [Balsamiq](https://balsamiq.com/)
 * [AmIresponsive](http://ami.responsivedesign.is/) - used to generate multi screen view of the webiste on different devices
 
@@ -172,6 +179,26 @@ I have tried to create an account with an already existing username. Correct fee
 
 Registration form is working as planned and user information is stored safely in the mongodb Users collection. Feedback provided stands out nicely to inform the user. Redirection to blank dashboard works as planned.
 
+#### User story : **be able to log in and out of my account**
+
+* **Plan**  
+My plan is to create a login form where the user can fill in its username and password.
+After signing in, the user will be redirected to the my account page where the user can see the previously writen reviews also a welcome message will be shown to the user.
+A menu option to log out will become available to the user.
+
+* **Implementation**  
+I created a form where the user can fill in its username and password which will be verified with the information stored in the database. 
+When the wrong information is being filled in, the correct feedback will be provided to the user. 
+In case the user wrongfully clicked on sign-in instead of register, a link to the register page is provided so the user doesn't have to go back. 
+
+* **Test**  
+Signing in with the correct username and password works as planned and the user will be redirected to correct page. 
+When the user fills in the wrong username and/or password, the correct message is being displayed on the screen.  
+Redirecting to register page  link works correctly.
+After pressing log out menu option session cookies are cleared and menu options available to logged users become unavailable.
+
+* **Result**  
+Application works as planned
 
 #### User story :  As a user I expect to **be able to create, read, update and delete my reviews**
 
