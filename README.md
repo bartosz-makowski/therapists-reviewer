@@ -1,3 +1,7 @@
+# Therapists Reviewer :open_file_folder:
+![Multiple screen view](https://github.com/bartosz-makowski/therapists-reviewer/blob/master/wireframes/multiple-screens-view.png)
+Project of the web application designed to promote health therapists based in the area of Hertfordshire UK. User of the website is able to search for therapists see their reviews and after creating an account also to write reviews for therapists.
+
 ## Contents:book:
 ### UX:superhero_man:	
   * **Project Goals** :jigsaw:	
