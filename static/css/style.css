@@ -14,7 +14,8 @@ body {
 /* Flash messages */
 
 #flash-message {
-    font-weight: 400;
+    font-weight: 900;
+    font-size: calc(1.5rem + .3vw);
 }
 
 /* Home Page */
