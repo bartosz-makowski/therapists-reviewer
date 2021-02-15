@@ -163,7 +163,7 @@ therapist_id       | String
 
 ### Testing :magnet:
 
-#### User story : As a user I want to be able to **setup an account to be able to leave reviews**
+#### User story : As a user I want to be able to **setup an account to be able to leave reviews** :key:
 
 ##### Plan:
 
@@ -183,7 +183,7 @@ I have tried to create an account with an already existing username. Correct fee
 
 Registration form is working as planned and user information is stored safely in the mongodb Users collection. Feedback provided stands out nicely to inform the user. Redirection to blank dashboard works as planned.
 
-#### User story : **be able to log in and out of my account**
+#### User story : As a user I expect to **be able to log in and out of my account** :door:
 
 * **Plan**  
 My plan is to create a login form where the user can fill in its username and password.
@@ -204,7 +204,7 @@ After pressing log out menu option session cookies are cleared and menu options 
 * **Result**  
 Application works as planned
 
-#### User story :  As a user I expect to **be able to create, read, update and delete my reviews**
+#### User story :  As a user I expect to **be able to create, read, update and delete my reviews** :+1:
 
 ##### Plan:
 
@@ -229,7 +229,7 @@ I tried to delete one of the reviews, this test uncovered a need for a confirmat
 
 All crude operations are working correctly, however a few modifcations are needed
 
-#### User story :  As a user I expect to **be able to see profiles of the therapists and their reviews**
+#### User story :  **As a user I expect to **be able to see profiles of the therapists and their reviews** :eyes:
 
 ##### Plan:
 
@@ -246,6 +246,26 @@ I tried to access this application from different devices and was always able to
 ##### Result:
 
 Application works as planned
+
+#### User story : As a user I expect to **search practitioners by location or therapies** :mag:
+
+##### Plan:
+
+I want the users to be able to search for therapists based on their location or therapy that they practice.
+
+##### Implementation:
+
+I want the users of this project to be able to use a search bar located at home page to look for therapists within a database based on their location and therapies that they do.
+After searching user should be able to see available therapists and if there are none an apropriate message should be displayed for the user.
+
+##### Test:
+
+I tried to use different search queries in the search bar. When no results are available the user can see a message saying that no available therapists has been found using this criteria. If successful the user will see all available therapists with the selected criteria.
+
+##### Result:
+
+Application works as planned
+
 
 ### Bugs :mosquito:
 #### New user registration form issue :spider:
