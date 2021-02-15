@@ -352,4 +352,6 @@ To clone the project:
 #### Running Therapist Reviewer Locally
 
 ### Acknowledgements :clap:
+* My The Greatest Of All Time (GOAT) mentor [Eventyret](https://github.com/Eventyret) for his great help, support and ideas.
+* [StackOverflow](https://stackoverflow.com/) community for fantastic resource when in need.
 * [Unsplash](https://unsplash.com/) community for access to free high quality images.
