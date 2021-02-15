@@ -55,7 +55,7 @@ The goal of this project is to provide the users with a website where they can s
 * **Requirements**
   * Navigate the website using the menu buttons and drop down selector
   * Ability to use this application on mobile and desktop devices
-  * Contnent displayed in a visually appealing manor
+  * Content displayed in a visually appealing manor
   
 * **Expectations**
   * Content is visually satisfying and informative on all screen sizes
@@ -67,6 +67,10 @@ The goal of this project is to provide the users with a website where they can s
 **Fonts**
 
 I chose to use the font **Lato** as it was designed with a neutral, yet friendly appearance which compliments the general attitude of this project's design and it's desired function. it can be found [here](https://fonts.google.com/specimen/Lato?sidebar.open=true&selection.family=Lato&preview.text_type=custom#standard-styles).The semi-rounded details of the letters give **Lato** a feeling of warmth, while the strong structure provides stability and seriousness. “Male and female, serious but friendly. With the feeling of the Summer,” says Łukasz.
+
+**Icons**
+
+Icons used in this project come from [FontAwesome](https://fontawesome.com/). They represent widely known social network websites and are located in the footer.
 
 **Colours**
 
@@ -128,7 +132,8 @@ therapist_id       | String
 * Buttons `<a>` tags form input areas and cards styled using [neumorphism](https://css-tricks.com/neumorphism-and-css/) style
 
 **Features to be implemented in the future**
-* Validation of review form to prevent only white spaces in the review description and review title input
+* Validation of review form to prevent from using only white spaces in the review description and review title input
+* Add a confirmation message after pressing `delete review button`
 * Have `forget my password` functionality
 * Login for therapists with an option to modify their details in the database
 * Add pagination so the list of reviews will be displayed with a max of 20 logs per page.
@@ -242,19 +247,6 @@ I tried to access this application from different devices and was always able to
 
 Application works as planned
 
-
-#### Tests
-##### Using W3C Markup Validator
-###### Test 1 :writing_hand:
-* **Error:** 
-* **Solution:** 
-###### Test 2 :mag_right:
-* **Warning:**  
-* **Solution:** 
-###### Test 3 :chart_with_upwards_trend:
-* **Error:** 
-* **Solution** 
-
 ### Bugs :mosquito:
 #### New user registration form issue :spider:
 * **Issue:** Form allowing registration for username and password using white spaces
@@ -265,6 +257,63 @@ Application works as planned
 * **Fix:** Empty div was `{% include 'components/flash_messages/flash-messages.html' %}`, moving it in to `{% block content %}` fixed this issue 
 
 ### Deployment :surfer:
+
+#### To deploy Therapists reviewer locally
+
+I have created this project using Github, from there I used [Gitpod](https://gitpod.io/) to write my code. 
+Then I used commits to git followed by "git push" to my GitHub repository. 
+I've deployed this project to Heroku and used "git push heroku master" to make sure my pushes to GitHub were also made to Heroku. 
+
+This project can be ran locally by following the following steps: (
+I used Gitpod for development, so the following steps will be specific to Gitpod. 
+You will need to adjust them depending on your IDE. You can find more information about installing packages using pip and virtual environments [here](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+
+
+To clone the project: 
+
+1. From the application's repository, click the "code" button and download the zip of the repository.
+    Alternatively, you can clone the repository using the following line in your terminal:
+
+    ``` 
+    git clone https://github.com/bartosz-makowski/therapists-reviewer.git
+    ``` 
+
+1. Access the folder in your terminal window and install the application's [required modules](https://github.com/bartosz-makowski/therapists-reviewer/blob/master/requirements.txt) using the following command:
+
+    ```
+    pip3 install -r requirements.txt
+    ```
+
+1. Sign-in or sign-up to [MongoDB](https://www.mongodb.com/) and create a new cluster
+    * Within the Sandbox, click the collections button and after click Create Database called therapists-reviewer
+    * Set up the following collections: users, therapists, reviews, exact data structure can be found in the readme.md
+    * Under the Security Menu on the left, select Database Access.
+    * Add a new database user, and keep the credentials secure
+    * Within the Network Access option, add IP Address 0.0.0.0
+
+1. In your IDE, create a file containing your environmental variables called env.py at the root level of the application. 
+    It will need to contain the following lines and variables:
+    ```
+    import os
+
+    os.environ["IP"] = "0.0.0.0"
+    os.environ["PORT"] = "5000"
+    os.environ["SECRET_KEY"] = "YOUR_SECRET_KEY"
+    os.environ["DEBUG"] = "True"
+    os.environ["MONGO_URI"] = "YOUR_MONGODB_URI"
+    os.environ["MONGO_DBNAME"]= "DATABASE_NAME" 
+    ```
+
+    Please note that you will need to update the **SECRET_KEY** with your own secret key, as well as the **MONGO_URI** and **MONGO_DBNAME** variables with those provided by [MongoDB](https://www.mongodb.com/)
+    To find your MONGO_URI, go to your clusters and click on connect. Choose connect your application and copy the link provided. 
+    Don't forget to update the necessary fields like password and database name. 
+
+    If you plan on pushing this application to a public repository, ensure that env.py is added to your .gitignore file.
+
+1. The application can now be run locally. In your terminal, type the following command 
+    ```
+    python3 app.py. 
+    ```
 
 #### To deploy your project on Heroku, use the following steps: 
 
